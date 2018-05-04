@@ -1,0 +1,9 @@
+# exclude everything in models but the server
+models/*
+!models/server
+
+# Exclude the datasets
+MNIST/*
+
+#Ignore the dataset splits
+dataset*.csv
