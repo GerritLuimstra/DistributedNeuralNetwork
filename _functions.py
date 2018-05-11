@@ -23,3 +23,21 @@ def get_dirlist(rootdir):
 
     dirlist.sort() # Optional, in case you want sorted directory names
     return dirlist
+
+# The improved formula for averaging
+# The difference here is that it does not treat the two matrices as equal,
+# But it looks at how big the influence of the dataset is (given by its percentage of the full dataset)
+# and then uses a percentage (influence) of the delta instead of the delta / 2 (basic average)
+def avg_func(w, delta, percentage):
+    return w + (delta * percentage) / 100
+
+# Combines two matrices using the gentle average formula
+def gentle_avg(m1, m2, split_percentage):
+    combined = m1
+    for r_index, row in enumerate(m1):
+        for w_index, weight in enumerate(row):
+            clientW = m2[r_index][w_index]
+            serverW = weight
+            delta = (clientW - serverW)
+            combined[r_index, w_index] = avg_func(serverW, delta, split_percentage)
+    return combined
