@@ -8,6 +8,8 @@ The server receives the locally trained weight matrices from the client computer
 
 Because of the distribution of the data set, the training should in theory be done significantly faster, because the client computers won't have to process such a big data set. 
 
+![Distributed Neural Network Schematic](https://i.imgur.com/K4ADbRa.jpg)
+
 Currently there is a trade-off between the time and accuracy. The more "splits" you make in the initial data set, the less observations the clients can make from the distributed (reduced) data set.
 
 Advantages of this approach:
