@@ -10,6 +10,12 @@ Because of the distribution of the data set, the training should in theory be do
 
 ![Distributed Neural Network Schematic](https://i.imgur.com/K4ADbRa.jpg)
 
+1. Split the data set into multiple splits
+2. The 'Clients' each download a split of the data set
+3. The clients train their own copy of the Neural Network locally
+4. When they are done training, the clients send back their final observations (weight matrices)
+5. The server merges the client's observations with the existing network
+
 Currently there is a trade-off between the time and accuracy. The more "splits" you make in the initial data set, the less observations the clients can make from the distributed (reduced) data set.
 
 Advantages of this approach:
