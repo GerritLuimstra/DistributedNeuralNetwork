@@ -55,7 +55,6 @@
             this.textBox1.Size = new System.Drawing.Size(176, 20);
             this.textBox1.TabIndex = 0;
             this.textBox1.Text = "217.122.28.164";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label1
             // 
@@ -263,8 +262,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button button5;
+        public System.Windows.Forms.Label label12;
     }
 }
 

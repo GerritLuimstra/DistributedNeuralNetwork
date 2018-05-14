@@ -16,23 +16,17 @@ namespace P2PNNClient
         string dataset = "";
         string path = "";
 
-        public static string testVaribale123;
-        public static string testVar123 = Form2.testVar1;
-
         public Form1()//main fucnction
         {
             InitializeComponent();
             AutoPing();
-            JsonTest();
-            Test();
-        }
-        
-        public void TestClass()
-        {
-            label12.Text = Form2.testVar1;
+            JsonPrint();
+            ReadableJson();
+
+            label12.Text = Config.URL;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//Pinging custom url
         {
             bool pinging = false;
             Ping isPing = new Ping();
@@ -50,37 +44,26 @@ namespace P2PNNClient
             }
         }
 
-        private void AutoPing()
+        private void AutoPing()//pinging predetermined ftp server on start
         {
-            //bool tryPing = false;
-            //Ping isPing = new Ping();
-            //label5.Text = "Not connected to ip";
-
             FtpWebRequest requestDir = (FtpWebRequest)FtpWebRequest.Create(new Uri("ftp://localhost"));
             requestDir.Credentials = new NetworkCredential("user", "user123");
             requestDir.Method = WebRequestMethods.Ftp.ListDirectory;
 
             try
             {
-                //PingReply reply = isPing.Send("217.122.28.164");
-                //tryPing = reply.Status == IPStatus.Success;
-                //label5.Text = "Connection to ip was successful";
-
                 FtpWebResponse response = (FtpWebResponse)requestDir.GetResponse();
+
                 label5.Text = "Connection to FTP server was succsessful";
             }
             catch (/*PingException*/ Exception)
             {
                 label5.Text = "Connection to FTP server was not succsessful";
+                //new Error("Connection to FTP server was not succsessful").ShowDialog();
             }
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void JsonTest()
+        private void JsonPrint()//Printing Json file
         {
             // Create a request for the URL.
             WebRequest request = WebRequest.Create(jsonLocation);
@@ -88,8 +71,6 @@ namespace P2PNNClient
             request.Credentials = CredentialCache.DefaultCredentials;
             // Get the response.
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            // Display the status.
-            //Console.WriteLine(response.StatusDescription);
             // Get the stream containing content returned by the server.
             Stream dataStream = response.GetResponseStream();
             // Open the stream using a StreamReader for easy access.
@@ -104,7 +85,7 @@ namespace P2PNNClient
             response.Close();
         }
 
-        public void Test()
+        public void ReadableJson()
         {
             // Create a request for the URL. 		
             WebRequest request = WebRequest.Create("http://www.karinkreeft.nl/datasets.json");
@@ -130,7 +111,6 @@ namespace P2PNNClient
             int i = 0;
             string token = json.token;
             string splitSize = json.splitSize;
-            //string datasets = json.datasets[i];
             dataset = json.datasets[i];
             
             label7.Text = "Token: " + token;
@@ -138,7 +118,7 @@ namespace P2PNNClient
             label9.Text = "Dataset " + i + ": " + dataset;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//Download dataset
         {
             string downloadLocation = "";
             string userName = Environment.UserName;
@@ -152,7 +132,7 @@ namespace P2PNNClient
                     System.IO.Directory.CreateDirectory(dirCheck);
                 downloadLocation = dirCheck + dataset;
             }
-
+            
             //Creating a folder in Temp if it doesn't exist
             //string subPath = "C:/Users/" + userName + "/AppData/Local/Temp/DNN/"; // your code goes here
             //bool exists = System.IO.Directory.Exists(subPath);
@@ -180,26 +160,29 @@ namespace P2PNNClient
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//Select folder
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                fbd.Tag = "Select folder to download dataset to";
+                fbd.Tag = "Select folder to download dataset to"; //!!!!!!!
                 path = fbd.SelectedPath;
                 MessageBox.Show(path);
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)//Settings
         {
-            Form2 f2 = new Form2();
+            Form2 f2 = new Form2(this);
             f2.ShowDialog();
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e) //experiment. can be deleted
         {
-            MessageBox.Show(Form2.testVar1);
+            //MessageBox.Show(Form2.testVar1);
+            MessageBox.Show(Config.URL);
         }
+
+        
     }
 }

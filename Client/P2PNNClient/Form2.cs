@@ -12,20 +12,32 @@ namespace P2PNNClient
 {
     public partial class Form2 : Form
     {
-        public static string testVar1;
-        //System.Windows.Forms.Form f = System.Windows.Forms.Application.OpenForms["Form2"];
+        private Form1 parentForm;
 
-        public Form2()
+        public Form2(Form1 form)
         {
             InitializeComponent();
+            parentForm = form;
+
+            textBox1.Text = Config.URL;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//Update button. remove
         {
-            label1.Text = "New sample text";
-            testVar1 = "Text from Form2";
-            Form1.testVaribale123 = "Test message123";
             MessageBox.Show (Form1.testVaribale123);
+        }
+
+        private void button2_Click(object sender, EventArgs e) //save button
+        {
+            parentForm.label12.Text = textBox1.Text;
+            Config.URL = textBox1.Text;
+            Config.saveConfig();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            //Config.someField = textBox1.Text;
+            
         }
     }
 }
