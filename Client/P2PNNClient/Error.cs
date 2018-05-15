@@ -13,9 +13,10 @@ namespace P2PNNClient
     public partial class Error : Form
     {
 
-        public Error(String message)
+        public Error(String title, String message)
         {
             InitializeComponent();
+            this.Text = title;
             label1.Text = message;
         }
 

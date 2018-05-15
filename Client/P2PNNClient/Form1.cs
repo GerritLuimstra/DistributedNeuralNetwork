@@ -1,11 +1,10 @@
-﻿using System;
+﻿//using Microsoft.AspNet.Mvc;
+using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
-using Newtonsoft.Json.Linq;
-//using Microsoft.AspNet.Mvc;
-using Newtonsoft.Json;
 
 namespace P2PNNClient
 {
@@ -15,6 +14,7 @@ namespace P2PNNClient
         static string jsonLocation = website + "datasets.json";
         string dataset = "";
         string path = "";
+        bool connectedToPage = false;
 
         public Form1()//main fucnction
         {
@@ -22,6 +22,13 @@ namespace P2PNNClient
             AutoPing();
             JsonPrint();
             ReadableJson();
+
+            /*Starting all the necessary checks*/
+            ConnTest();
+            //TokenCheck();
+            //NNProgress();
+            //UploadProgress();
+            /*Starting all the necessary checks*/
 
             label12.Text = Config.URL;
         }
@@ -118,7 +125,7 @@ namespace P2PNNClient
             label9.Text = "Dataset " + i + ": " + dataset;
         }
 
-        private void button2_Click(object sender, EventArgs e)//Download dataset
+        private void button2_Click(object sender, EventArgs e)//Download dataset TODO make better
         {
             string downloadLocation = "";
             string userName = Environment.UserName;
@@ -132,14 +139,6 @@ namespace P2PNNClient
                     System.IO.Directory.CreateDirectory(dirCheck);
                 downloadLocation = dirCheck + dataset;
             }
-            
-            //Creating a folder in Temp if it doesn't exist
-            //string subPath = "C:/Users/" + userName + "/AppData/Local/Temp/DNN/"; // your code goes here
-            //bool exists = System.IO.Directory.Exists(subPath);
-            //if (!exists)
-            //    System.IO.Directory.CreateDirectory(subPath);
-            
-            //string downloadLocation = "C:/Users/" + userName + "/AppData/Local/Temp/DNN/" + dataset;
 
             //checking wether user has set custom download location
             if (path != "")
@@ -160,29 +159,69 @@ namespace P2PNNClient
 
         }
 
-        private void button3_Click(object sender, EventArgs e)//Select folder
-        {
-            FolderBrowserDialog fbd = new FolderBrowserDialog();
-            if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                fbd.Tag = "Select folder to download dataset to"; //!!!!!!!
-                path = fbd.SelectedPath;
-                MessageBox.Show(path);
-            }
-        }
-
-        private void button4_Click(object sender, EventArgs e)//Settings
+        private void settingsBtn_Click(object sender, EventArgs e) //settings
         {
             Form2 f2 = new Form2(this);
             f2.ShowDialog();
         }
 
-        private void button5_Click(object sender, EventArgs e) //experiment. can be deleted
+        public void ConnTest()
         {
-            //MessageBox.Show(Form2.testVar1);
-            MessageBox.Show(Config.URL);
+            bool pinging = false;
+            Ping isPing = new Ping();
+            bool connected = false;
+
+            try
+            {
+                PingReply reply = isPing.Send(Config.URL);
+                pinging = reply.Status == IPStatus.Success;
+                connected = true;
+                connectedToPage = true;
+            }
+            catch (PingException)
+            {
+                //MessageBox.Show(pe.ToString());
+            }
+
+            if (connected)
+            {
+                TokenCheck();
+                ConnToServerTXT.Text = "Connection to server ... OK";
+            }
+            else
+            {
+                ConnToServerTXT.Text = "Connection to server ... FALSE";
+            }
         }
 
-        
+
+        private void TokenCheck()
+        {
+
+        }
+
+        private void NNProgress()
+        {
+
+        }
+
+        private void UploadProgress()
+        {
+
+        }
+
+        private void PingPage()
+        {
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void launchNN_Click(object sender, EventArgs e)
+        {
+            PingPage();
+        }
     }
 }

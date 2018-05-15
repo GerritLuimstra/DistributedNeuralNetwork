@@ -14,7 +14,8 @@ namespace P2PNNClient
     static class Config
     {
         public static String URL;
-        public static String sample;
+        public static String downloadLocation;
+        public static String token;
 
         private static String Location = "config.dnnconf";
 
@@ -28,14 +29,16 @@ namespace P2PNNClient
         public static void loadConfig()
         {
             string json = System.IO.File.ReadAllText(@Config.Location);
+            //MessageBox.Show(json); //debug
             dynamic configContents = JsonConvert.DeserializeObject(json);
-            URL = configContents.URL;
-            sample = configContents.sample;
+            URL = configContents.URL;//setting variable 
+            downloadLocation = configContents.downloadLocation;
+            token = configContents.token;
         }
 
         public static void saveConfig()
         {
-            String text = "{URL: \"" + Config.URL + "\", sample: \"" + Config.sample + "\"}";
+            String text = "{URL: \"" + Config.URL + "\", downloadLocation: \"" + Config.downloadLocation.Replace("\\", "\\\\") + "\", token: \"" + Config.token + "\"}";
             System.IO.File.WriteAllText(@Config.Location, text);
         }
     }
