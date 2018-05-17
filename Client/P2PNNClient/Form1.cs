@@ -197,7 +197,36 @@ namespace P2PNNClient
 
         private void TokenCheck()
         {
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://stackoverflow.com/questions/1949610/how-can-i-catch-a9876876-404");
+            //request.Method = "HEAD";
+            //request.Credentials = CredentialCache.DefaultCredentials;
 
+            //try
+           // {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost/tokencheck/index.php?token=" + Config.token);
+                request.Method = "HEAD";
+                request.Credentials = CredentialCache.DefaultCredentials;
+                //MessageBox.Show(Config.token);
+                try
+                {
+                    HttpWebResponse resp = (HttpWebResponse)request.GetResponse();
+                MessageBox.Show(resp.StatusCode.ToString());
+                    if (resp.StatusCode.ToString() == "TOKEN_VALID")
+                    {
+                    MessageBox.Show("is valid");
+                }
+                } catch
+                {
+                    tokenCheck.Text = "Token check ... False";
+                }
+                
+                
+                //tokenCheck.Text = "Token check ... OK";
+            //}
+            //catch
+            //{
+             //   tokenCheck.Text = "Token check ... False";
+            //}
         }
 
         private void NNProgress()
