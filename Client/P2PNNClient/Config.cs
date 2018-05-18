@@ -1,19 +1,12 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using System.Windows.Forms;
+﻿using Newtonsoft.Json;
+using System;
 
 
 namespace P2PNNClient
 {
     static class Config
     {
-        public static String URL;
+        public static String URL = "CHANGE.THIS";
         public static String downloadLocation;
         public static String token;
 
@@ -21,7 +14,18 @@ namespace P2PNNClient
 
         static Config()
         {
-            loadConfig();
+            try
+            {
+                loadConfig();
+            }
+            catch
+            {
+                String text = "{URL: \"" + "CHANGE.THIS" + "\", downloadLocation: \"" + "" + "\", token: \"" + "" + "\",  token: \"" + "" + "\"}";
+                System.IO.File.WriteAllText(@Config.Location, text);
+                new Error("Config file ERROR", "Please re-enter settings in the settings menu.", 250, 100).ShowDialog();
+            }
+
+            //loadConfig();
         }
 
         

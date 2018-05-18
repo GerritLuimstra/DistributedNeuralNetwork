@@ -109,6 +109,7 @@
             this.websiteInput.Name = "websiteInput";
             this.websiteInput.Size = new System.Drawing.Size(208, 20);
             this.websiteInput.TabIndex = 13;
+            this.websiteInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.websiteInput_KeyDown);
             // 
             // debugBtn
             // 
@@ -134,7 +135,13 @@
             this.Controls.Add(this.downloadChange);
             this.Controls.Add(this.downloadLocation);
             this.Controls.Add(this.button2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "Form2";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Settings";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);

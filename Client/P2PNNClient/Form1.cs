@@ -1,5 +1,4 @@
-﻿//using Microsoft.AspNet.Mvc;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Net;
@@ -14,7 +13,9 @@ namespace P2PNNClient
         static string jsonLocation = website + "datasets.json";
         string dataset = "";
         string path = "";
-        bool connectedToPage = false;
+
+
+        private static String NNProgressLocation = "nnprogress.dnn";
 
         public Form1()//main fucnction
         {
@@ -176,7 +177,6 @@ namespace P2PNNClient
                 PingReply reply = isPing.Send(Config.URL);
                 pinging = reply.Status == IPStatus.Success;
                 connected = true;
-                connectedToPage = true;
             }
             catch (PingException)
             {
@@ -231,6 +231,10 @@ namespace P2PNNClient
 
         private void NNProgress()
         {
+            string nnProgress = File.ReadAllText(@NNProgressLocation);
+            //MessageBox.Show(json); //debug
+            //dynamic nnPercent = JsonConvert.DeserializeObject(nnProgress);
+            nnProgressTXT.Text = "Neural network progress ... " +  nnProgress + "%";
 
         }
 
@@ -241,11 +245,41 @@ namespace P2PNNClient
 
         private void PingPage()
         {
+            bool pinging = false;
+            Ping isPing = new Ping();
+            bool connected = false;
+
+            try
+            {
+                PingReply reply = isPing.Send(Config.URL);
+                pinging = reply.Status == IPStatus.Success;
+                connected = true;
+            }
+            catch (PingException)
+            {
+            }
+
+            if (connected)
+            {
+                ConnToServerTXT.Text = "Connection to server ... OK";
+            }
+            else
+            {
+                ConnToServerTXT.Text = "Connection to server ... FALSE";
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
+            PingPage();
+            if (File.Exists(NNProgressLocation))
+            {
+                NNProgress();
+            }
+            else
+            {
+                nnProgressTXT.Text = "Neural network progress ... NOT RUNNING";
+            }
         }
 
         private void launchNN_Click(object sender, EventArgs e)

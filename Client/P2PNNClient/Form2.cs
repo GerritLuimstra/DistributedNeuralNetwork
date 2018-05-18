@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace P2PNNClient
@@ -24,11 +17,16 @@ namespace P2PNNClient
 
         private void button2_Click(object sender, EventArgs e) //save button
         {
+            SaveConfig();
+        }
+
+        private void SaveConfig()
+        {
             parentForm.label12.Text = websiteInput.Text;
             Config.URL = websiteInput.Text;
             Config.token = tokenInput.Text;
             TestConn(websiteInput.Text);
-            if(isValid == true)
+            if (isValid)
             {
                 Config.saveConfig();
                 parentForm.ConnTest();
@@ -70,7 +68,7 @@ namespace P2PNNClient
             }
             catch (PingException)
             {
-                new Error("Invalid host error", "Website link is invalid.").ShowDialog();
+                new Error("Invalid host ERROR", "Website link is invalid.", 170,100).ShowDialog();
             }
         }
 
@@ -78,6 +76,14 @@ namespace P2PNNClient
         {
             MessageBox.Show("Work in progress");
             // TODO add debug window
+        }
+
+        private void websiteInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
+            {
+                SaveConfig();
+            }
         }
 
         // TODO add token check. Maybe sent it to website and get a response?
