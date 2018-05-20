@@ -145,7 +145,7 @@ namespace P2PNNClient
             if (path != "")
                 downloadLocation = path + "/" + dataset;
 
-            string remoteUri = "http://www.karinkreeft.nl/"; //optimize
+            string remoteUri = Config.URL; //optimize
             string fileName = dataset, myStringWebResource = null;
             // Create a new WebClient instance.
             WebClient myWebClient = new WebClient();
@@ -229,11 +229,48 @@ namespace P2PNNClient
             //}
         }
 
+        private void DownloadCheck()
+        {
+            string downloadLocation = "";
+            string customLocation = Config.downloadLocation;
+            string userName = Environment.UserName;
+
+            //checking if download location has been changed by the user
+            if (customLocation == "")
+            {
+                string dirCheck = "C:/Users/" + userName + "/AppData/Local/Temp/DNN/";
+                bool exists = System.IO.Directory.Exists(dirCheck);
+                if (!exists)
+                    System.IO.Directory.CreateDirectory(dirCheck);
+                downloadLocation = dirCheck + dataset;
+            }
+
+            //checking wether user has set custom download location
+            if (customLocation != "")
+                downloadLocation = customLocation + "/" + dataset;
+
+            string remoteUri = Config.URL + "/"; //optimize
+            string fileName = dataset, myStringWebResource = null;
+            // Create a new WebClient instance.
+            WebClient myWebClient = new WebClient();
+            // Concatenate the domain with the Web resource filename.
+            myStringWebResource = remoteUri + fileName;
+            label10.Text = "Downloading File " + dataset + " from " + remoteUri;
+            // Download the Web resource and save it into the current filesystem folder.
+            myWebClient.DownloadFile(myStringWebResource, @downloadLocation);
+            label10.Text = "Successfully Downloaded File " + fileName + " from " + myStringWebResource;
+            downloadCheck.Text = "Downloaded file saved in the following file system folder: " + downloadLocation;
+            System.Diagnostics.Process.Start(@downloadLocation);
+        }
+
+        private void LaunchNN() //TODO Make custom path to nn in the settings menu
+        {
+
+        }
+
         private void NNProgress()
         {
             string nnProgress = File.ReadAllText(@NNProgressLocation);
-            //MessageBox.Show(json); //debug
-            //dynamic nnPercent = JsonConvert.DeserializeObject(nnProgress);
             nnProgressTXT.Text = "Neural network progress ... " +  nnProgress + "%";
 
         }
@@ -282,9 +319,9 @@ namespace P2PNNClient
             }
         }
 
-        private void launchNN_Click(object sender, EventArgs e)
+        private void launchDNNBtn_Click(object sender, EventArgs e)
         {
-            PingPage();
+            DownloadCheck();
         }
     }
 }

@@ -50,7 +50,7 @@
             this.tokenCheck = new System.Windows.Forms.Label();
             this.downloadCheck = new System.Windows.Forms.Label();
             this.launchNNTXT = new System.Windows.Forms.Label();
-            this.launchNN = new System.Windows.Forms.Button();
+            this.launchDNNBtn = new System.Windows.Forms.Button();
             this.nnProgressTXT = new System.Windows.Forms.Label();
             this.uploadMatricesTXT = new System.Windows.Forms.Label();
             this.uploadMatrices = new System.Windows.Forms.Button();
@@ -188,7 +188,7 @@
             // 
             // settingsBtn
             // 
-            this.settingsBtn.Location = new System.Drawing.Point(706, 415);
+            this.settingsBtn.Location = new System.Drawing.Point(221, 229);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(75, 23);
             this.settingsBtn.TabIndex = 15;
@@ -241,15 +241,15 @@
             this.launchNNTXT.TabIndex = 20;
             this.launchNNTXT.Text = "Launch neural network";
             // 
-            // launchNN
+            // launchDNNBtn
             // 
-            this.launchNN.Location = new System.Drawing.Point(176, 84);
-            this.launchNN.Name = "launchNN";
-            this.launchNN.Size = new System.Drawing.Size(75, 23);
-            this.launchNN.TabIndex = 21;
-            this.launchNN.Text = "Launch";
-            this.launchNN.UseVisualStyleBackColor = true;
-            this.launchNN.Click += new System.EventHandler(this.launchNN_Click);
+            this.launchDNNBtn.Location = new System.Drawing.Point(19, 229);
+            this.launchDNNBtn.Name = "launchDNNBtn";
+            this.launchDNNBtn.Size = new System.Drawing.Size(75, 23);
+            this.launchDNNBtn.TabIndex = 21;
+            this.launchDNNBtn.Text = "Launch";
+            this.launchDNNBtn.UseVisualStyleBackColor = true;
+            this.launchDNNBtn.Click += new System.EventHandler(this.launchDNNBtn_Click);
             // 
             // nnProgressTXT
             // 
@@ -302,7 +302,7 @@
             this.Controls.Add(this.uploadMatrices);
             this.Controls.Add(this.uploadMatricesTXT);
             this.Controls.Add(this.nnProgressTXT);
-            this.Controls.Add(this.launchNN);
+            this.Controls.Add(this.launchDNNBtn);
             this.Controls.Add(this.launchNNTXT);
             this.Controls.Add(this.downloadCheck);
             this.Controls.Add(this.tokenCheck);
@@ -356,7 +356,7 @@
         private System.Windows.Forms.Label tokenCheck;
         private System.Windows.Forms.Label downloadCheck;
         private System.Windows.Forms.Label launchNNTXT;
-        private System.Windows.Forms.Button launchNN;
+        private System.Windows.Forms.Button launchDNNBtn;
         private System.Windows.Forms.Label nnProgressTXT;
         private System.Windows.Forms.Label uploadMatricesTXT;
         private System.Windows.Forms.Button uploadMatrices;
