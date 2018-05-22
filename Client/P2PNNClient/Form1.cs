@@ -174,9 +174,17 @@ namespace P2PNNClient
 
             try
             {
-                PingReply reply = isPing.Send(Config.URL);
-                pinging = reply.Status == IPStatus.Success;
-                connected = true;
+                if(Config.URL == "")
+                {
+                    connected = false;
+                    new Error("Blank link ERROR", "Please update the link via settings menu", 150, 100);
+                }
+                else
+                {
+                    PingReply reply = isPing.Send(Config.URL);
+                    pinging = reply.Status == IPStatus.Success;
+                    connected = true;
+                }
             }
             catch (PingException)
             {
@@ -285,12 +293,30 @@ namespace P2PNNClient
             bool pinging = false;
             Ping isPing = new Ping();
             bool connected = false;
+            String newUrl = Config.URL;
 
             try
             {
-                PingReply reply = isPing.Send(Config.URL);
-                pinging = reply.Status == IPStatus.Success;
-                connected = true;
+                if (Config.URL == "")
+                {
+                    connected = false;
+                    //new Error("Blank link ERROR", "Please update the link via settings menu", 150, 100).ShowDialog();
+                }
+                else
+                {
+                    char last = Config.URL[Config.URL.Length - 1];
+                    bool isSlash = false;
+                    if (last.ToString() == "/")
+                        isSlash = true;
+                    if (newUrl.Contains("http://") && isSlash)
+                    {
+                        newUrl = newUrl.Remove(0, 7);
+                        newUrl = newUrl.Replace("/", "");
+                    }
+                    PingReply reply = isPing.Send(newUrl);
+                    pinging = reply.Status == IPStatus.Success;
+                    connected = true;
+                }
             }
             catch (PingException)
             {

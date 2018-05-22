@@ -26,3 +26,4 @@ C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\bin\Debug\System.Web.
 C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\obj\Debug\P2PNNClient.Form2.resources
 C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\obj\Debug\P2PNNClient.Error.resources
+C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\obj\Debug\P2PNNClient.Debug.resources

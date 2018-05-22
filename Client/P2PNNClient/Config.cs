@@ -9,6 +9,7 @@ namespace P2PNNClient
         public static String URL = "CHANGE.THIS";
         public static String downloadLocation;
         public static String token;
+        public static String debug;
 
         private static String Location = "config.dnnconf";
 
@@ -20,15 +21,13 @@ namespace P2PNNClient
             }
             catch
             {
-                String text = "{URL: \"" + "CHANGE.THIS" + "\", downloadLocation: \"" + "" + "\", token: \"" + "" + "\"}";
+                String text = "{URL: \"" + "CHANGE.THIS" + "\", downloadLocation: \"" + "" + "\", token: \"" + "" + "\", debug: \"" + "FALSE" + "\"}";
                 System.IO.File.WriteAllText(@Config.Location, text);
                 new Error("Config file ERROR", "Please re-enter settings in the settings menu.", 250, 100).ShowDialog();
             }
 
             //loadConfig();
         }
-
-        
 
         public static void loadConfig()
         {
@@ -38,12 +37,13 @@ namespace P2PNNClient
             URL = configContents.URL;//setting variable 
             downloadLocation = configContents.downloadLocation;
             token = configContents.token;
+            debug = configContents.debug;
         }
 
         public static void saveConfig()
         {
             LinkCheck();
-            String text = "{URL: \"" + Config.URL + "\", downloadLocation: \"" + Config.downloadLocation.Replace("\\", "\\\\") + "\", token: \"" + Config.token + "\"}";
+            String text = "{URL: \"" + Config.URL + "\", downloadLocation: \"" + Config.downloadLocation.Replace("\\", "\\\\") + "\", token: \"" + Config.token + "\", debug: \"" + "TRUE" + "\"}";
             System.IO.File.WriteAllText(@Config.Location, text);
         }
 
