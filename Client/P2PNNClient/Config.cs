@@ -43,7 +43,7 @@ namespace P2PNNClient
         public static void saveConfig()
         {
             LinkCheck();
-            String text = "{URL: \"" + Config.URL + "\", downloadLocation: \"" + Config.downloadLocation.Replace("\\", "\\\\") + "\", token: \"" + Config.token + "\", debug: \"" + "TRUE" + "\"}";
+            String text = "{URL: \"" + Config.URL + "\", downloadLocation: \"" + Config.downloadLocation.Replace("\\", "\\\\") + "\", token: \"" + Config.token + "\", debug: \"" + "DNNDEBUG" + "\"}";
             System.IO.File.WriteAllText(@Config.Location, text);
         }
 

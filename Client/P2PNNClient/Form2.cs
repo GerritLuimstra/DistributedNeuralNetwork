@@ -13,7 +13,6 @@ namespace P2PNNClient
         {
             InitializeComponent();
             parentForm = form;
-            DebugCheck();
         }
 
         private void button2_Click(object sender, EventArgs e) //save button
@@ -23,7 +22,6 @@ namespace P2PNNClient
 
         private void SaveConfig()
         {
-            parentForm.label12.Text = websiteInput.Text;
             Config.URL = websiteInput.Text;
             Config.token = tokenInput.Text;
             TestConn(websiteInput.Text);
@@ -73,29 +71,12 @@ namespace P2PNNClient
             }
         }
 
-        private void debugBtn_Click(object sender, EventArgs e) //Debug button
-        {
-            // TODO move button to main window
-
-            Debug debug = new Debug();
-            debug.ShowDialog();
-
-        }
-
         private void websiteInput_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
                 SaveConfig();
             }
-        }
-
-        private void DebugCheck()
-        {
-            if (Config.debug == "TRUE")
-                debugBtn.Visible = true;
-            else
-                debugBtn.Visible = false;
         }
 
         // TODO add token check. Maybe sent it to website and get a response?

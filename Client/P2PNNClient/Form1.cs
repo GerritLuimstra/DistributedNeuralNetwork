@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
@@ -9,155 +8,15 @@ namespace P2PNNClient
 {
     public partial class Form1 : Form
     {
-        static string website = "http://www.karinkreeft.nl/";
-        static string jsonLocation = website + "datasets.json";
-        string dataset = "";
-        string path = "";
-
+        string dataset = "dataset0.csv";
 
         private static String NNProgressLocation = "nnprogress.dnn";
 
         public Form1()//main fucnction
         {
             InitializeComponent();
-            AutoPing();
-            JsonPrint();
-            ReadableJson();
-
-            /*Starting all the necessary checks*/
+            DebugCheck();
             ConnTest();
-            //TokenCheck();
-            //NNProgress();
-            //UploadProgress();
-            /*Starting all the necessary checks*/
-
-            label12.Text = Config.URL;
-        }
-
-        private void button1_Click(object sender, EventArgs e)//Pinging custom url
-        {
-            bool pinging = false;
-            Ping isPing = new Ping();
-            label3.Text = "UNSUCCESSFUL";
-
-            try
-            {
-                PingReply reply = isPing.Send(textBox1.Text);
-                pinging = reply.Status == IPStatus.Success;
-                label3.Text = "SUCCESSFUL";
-            }
-            catch(PingException)
-            {
-
-            }
-        }
-
-        private void AutoPing()//pinging predetermined ftp server on start
-        {
-            FtpWebRequest requestDir = (FtpWebRequest)FtpWebRequest.Create(new Uri("ftp://localhost"));
-            requestDir.Credentials = new NetworkCredential("user", "user123");
-            requestDir.Method = WebRequestMethods.Ftp.ListDirectory;
-
-            try
-            {
-                FtpWebResponse response = (FtpWebResponse)requestDir.GetResponse();
-
-                label5.Text = "Connection to FTP server was succsessful";
-            }
-            catch (/*PingException*/ Exception)
-            {
-                label5.Text = "Connection to FTP server was not succsessful";
-                //new Error("Connection to FTP server was not succsessful").ShowDialog();
-            }
-        }
-
-        private void JsonPrint()//Printing Json file
-        {
-            // Create a request for the URL.
-            WebRequest request = WebRequest.Create(jsonLocation);
-            // If required by the server, set the credentials.
-            request.Credentials = CredentialCache.DefaultCredentials;
-            // Get the response.
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            // Get the stream containing content returned by the server.
-            Stream dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            // Display the content.
-            label6.Text = responseFromServer;
-            // Cleanup the streams and the response.
-            reader.Close();
-            dataStream.Close();
-            response.Close();
-        }
-
-        public void ReadableJson()
-        {
-            // Create a request for the URL. 		
-            WebRequest request = WebRequest.Create("http://www.karinkreeft.nl/datasets.json");
-            // If required by the server, set the credentials.
-            request.Credentials = CredentialCache.DefaultCredentials;
-            // Get the response.
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            // Get the stream containing content returned by the server.
-            Stream dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            // Cleanup the streams and the response.
-            reader.Close();
-            dataStream.Close();
-            response.Close();
-
-
-
-            dynamic json = JsonConvert.DeserializeObject(responseFromServer);
-            
-            int i = 0;
-            string token = json.token;
-            string splitSize = json.splitSize;
-            dataset = json.datasets[i];
-            
-            label7.Text = "Token: " + token;
-            label8.Text = "Split size: " + splitSize;
-            label9.Text = "Dataset " + i + ": " + dataset;
-        }
-
-        private void button2_Click(object sender, EventArgs e)//Download dataset TODO make better
-        {
-            string downloadLocation = "";
-            string userName = Environment.UserName;
-
-            //checking if download location has been changed by the user
-            if(path == "")
-            {
-                string dirCheck = "C:/Users/" + userName + "/AppData/Local/Temp/DNN/";
-                bool exists = System.IO.Directory.Exists(dirCheck);
-                if (!exists)
-                    System.IO.Directory.CreateDirectory(dirCheck);
-                downloadLocation = dirCheck + dataset;
-            }
-
-            //checking wether user has set custom download location
-            if (path != "")
-                downloadLocation = path + "/" + dataset;
-
-            string remoteUri = Config.URL; //optimize
-            string fileName = dataset, myStringWebResource = null;
-            // Create a new WebClient instance.
-            WebClient myWebClient = new WebClient();
-            // Concatenate the domain with the Web resource filename.
-            myStringWebResource = remoteUri + fileName;
-            label10.Text = "Downloading File " + dataset + " from " + remoteUri;
-            // Download the Web resource and save it into the current filesystem folder.
-            myWebClient.DownloadFile(myStringWebResource, @downloadLocation);
-            label10.Text = "Successfully Downloaded File " + fileName + " from " + myStringWebResource;
-            label11.Text = "Downloaded file saved in the following file system folder: " + downloadLocation;
-            System.Diagnostics.Process.Start(@downloadLocation);
-
         }
 
         private void settingsBtn_Click(object sender, EventArgs e) //settings
@@ -203,7 +62,7 @@ namespace P2PNNClient
         }
 
 
-        private void TokenCheck()
+        private void TokenCheck() //TODO Fix
         {
             //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://stackoverflow.com/questions/1949610/how-can-i-catch-a9876876-404");
             //request.Method = "HEAD";
@@ -257,17 +116,15 @@ namespace P2PNNClient
             if (customLocation != "")
                 downloadLocation = customLocation + "/" + dataset;
 
-            string remoteUri = Config.URL + "/"; //optimize
+            string remoteUri = Config.URL ; //optimize
             string fileName = dataset, myStringWebResource = null;
             // Create a new WebClient instance.
             WebClient myWebClient = new WebClient();
             // Concatenate the domain with the Web resource filename.
             myStringWebResource = remoteUri + fileName;
-            label10.Text = "Downloading File " + dataset + " from " + remoteUri;
             // Download the Web resource and save it into the current filesystem folder.
             myWebClient.DownloadFile(myStringWebResource, @downloadLocation);
-            label10.Text = "Successfully Downloaded File " + fileName + " from " + myStringWebResource;
-            downloadCheck.Text = "Downloaded file saved in the following file system folder: " + downloadLocation;
+            downloadCheckTXT.Text = "Download ... SUCCESSFUL";
             System.Diagnostics.Process.Start(@downloadLocation);
         }
 
@@ -348,6 +205,25 @@ namespace P2PNNClient
         private void launchDNNBtn_Click(object sender, EventArgs e)
         {
             DownloadCheck();
+        }
+
+        private void debugBtn_Click(object sender, EventArgs e)
+        {
+            Debug debug = new Debug();
+            debug.ShowDialog();
+        }
+
+        private void DebugCheck()
+        {
+            if (Config.debug == "DNNDEBUG")
+                debugBtn.Visible = true;
+            else if (Config.debug == "TRUE" || Config.debug == "true")
+            {
+                debugBtn.Visible = false;
+                MessageBox.Show("Nice try, but no");
+            }
+            else
+                debugBtn.Visible = false;
         }
     }
 }

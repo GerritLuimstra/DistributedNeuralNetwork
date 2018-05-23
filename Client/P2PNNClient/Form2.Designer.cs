@@ -36,7 +36,6 @@
             this.token = new System.Windows.Forms.Label();
             this.tokenInput = new System.Windows.Forms.TextBox();
             this.websiteInput = new System.Windows.Forms.TextBox();
-            this.debugBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button2
@@ -111,22 +110,11 @@
             this.websiteInput.TabIndex = 13;
             this.websiteInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.websiteInput_KeyDown);
             // 
-            // debugBtn
-            // 
-            this.debugBtn.Location = new System.Drawing.Point(16, 132);
-            this.debugBtn.Name = "debugBtn";
-            this.debugBtn.Size = new System.Drawing.Size(75, 23);
-            this.debugBtn.TabIndex = 14;
-            this.debugBtn.Text = "Debug";
-            this.debugBtn.UseVisualStyleBackColor = true;
-            this.debugBtn.Click += new System.EventHandler(this.debugBtn_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(335, 169);
-            this.Controls.Add(this.debugBtn);
             this.Controls.Add(this.websiteInput);
             this.Controls.Add(this.tokenInput);
             this.Controls.Add(this.token);
@@ -158,6 +146,5 @@
         private System.Windows.Forms.Label token;
         private System.Windows.Forms.TextBox tokenInput;
         private System.Windows.Forms.TextBox websiteInput;
-        private System.Windows.Forms.Button debugBtn;
     }
 }

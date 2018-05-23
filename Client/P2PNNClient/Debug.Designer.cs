@@ -100,6 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
             this.ClientSize = new System.Drawing.Size(313, 77);
             this.Controls.Add(this.TestErrorBtn);
             this.Controls.Add(this.OpenDloadLocationBtn);
@@ -108,9 +109,11 @@
             this.Controls.Add(this.WebsiteBtn);
             this.Controls.Add(this.ShowDloadLocationBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Debug";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Debug";
             this.ResumeLayout(false);
 
