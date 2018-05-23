@@ -41,11 +41,12 @@
             this.uploadStatus = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.debugBtn = new System.Windows.Forms.Button();
+            this.EasterEgg = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // settingsBtn
             // 
-            this.settingsBtn.Location = new System.Drawing.Point(319, 148);
+            this.settingsBtn.Location = new System.Drawing.Point(319, 66);
             this.settingsBtn.Name = "settingsBtn";
             this.settingsBtn.Size = new System.Drawing.Size(75, 23);
             this.settingsBtn.TabIndex = 15;
@@ -134,7 +135,7 @@
             // 
             // debugBtn
             // 
-            this.debugBtn.Location = new System.Drawing.Point(319, 84);
+            this.debugBtn.Location = new System.Drawing.Point(319, 112);
             this.debugBtn.Name = "debugBtn";
             this.debugBtn.Size = new System.Drawing.Size(75, 23);
             this.debugBtn.TabIndex = 26;
@@ -142,11 +143,22 @@
             this.debugBtn.UseVisualStyleBackColor = true;
             this.debugBtn.Click += new System.EventHandler(this.debugBtn_Click);
             // 
+            // EasterEgg
+            // 
+            this.EasterEgg.AutoSize = true;
+            this.EasterEgg.Location = new System.Drawing.Point(346, 167);
+            this.EasterEgg.Name = "EasterEgg";
+            this.EasterEgg.Size = new System.Drawing.Size(48, 13);
+            this.EasterEgg.TabIndex = 27;
+            this.EasterEgg.Text = "Ver α1.0";
+            this.EasterEgg.DoubleClick += new System.EventHandler(this.EasterEgg_DoubleClick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 189);
+            this.Controls.Add(this.EasterEgg);
             this.Controls.Add(this.debugBtn);
             this.Controls.Add(this.uploadStatus);
             this.Controls.Add(this.uploadMatricesTXT);
@@ -180,6 +192,7 @@
         private System.Windows.Forms.Label uploadStatus;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button debugBtn;
+        private System.Windows.Forms.Label EasterEgg;
     }
 }
 

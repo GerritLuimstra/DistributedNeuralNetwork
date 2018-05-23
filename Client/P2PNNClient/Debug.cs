@@ -37,8 +37,7 @@ namespace P2PNNClient
 
         private void TestErrorBtn_Click(object sender, EventArgs e)
         {
-            Error err = new Error("Test Error", "Test Error window with width 300 and height 100", 300, 100);
-            err.ShowDialog();
+            new Error("Test Error", "Test Error window with width 300 and height 100", 300, 100).ShowDialog();
         }
 
         private void RawJsonBtn_Click(object sender, EventArgs e)

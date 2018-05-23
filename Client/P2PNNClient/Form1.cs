@@ -36,7 +36,7 @@ namespace P2PNNClient
                 if(Config.URL == "")
                 {
                     connected = false;
-                    new Error("Blank link ERROR", "Please update the link via settings menu", 150, 100);
+                    //new Error("Blank link ERROR", "Please update the link via settings menu", 150, 100).ShowDialog();
                 }
                 else
                 {
@@ -202,28 +202,33 @@ namespace P2PNNClient
             }
         }
 
-        private void launchDNNBtn_Click(object sender, EventArgs e)
+        private void launchDNNBtn_Click(object sender, EventArgs e) // Launching the DNN
         {
             DownloadCheck();
         }
 
-        private void debugBtn_Click(object sender, EventArgs e)
+        private void debugBtn_Click(object sender, EventArgs e) //Opening the debug menu
         {
             Debug debug = new Debug();
             debug.ShowDialog();
         }
 
-        private void DebugCheck()
+        private void DebugCheck() // Checking the config file whether the debug has been enabled
         {
             if (Config.debug == "DNNDEBUG")
                 debugBtn.Visible = true;
             else if (Config.debug == "TRUE" || Config.debug == "true")
             {
                 debugBtn.Visible = false;
-                MessageBox.Show("Nice try, but no");
+                new Error("Easter egg?", "That would be too easy, wouldn't it? :)", 230, 90).ShowDialog();
             }
             else
                 debugBtn.Visible = false;
+        }
+
+        private void EasterEgg_DoubleClick(object sender, EventArgs e)
+        {
+            new Error("Easter egg?", "/╲ ︵ ╱\\ \r\n|  (◉) (◉)  | \r\n\\ ︶ V ︶ / \r\n/↺↺↺↺\\ \r\n↺↺↺↺↺ \r\n\\↺↺↺↺/ \r\n¯¯/\\¯/\\¯¯ \r\n\r\nMade by Erik Naljota", 175, 200).ShowDialog();
         }
     }
 }
