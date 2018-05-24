@@ -150,7 +150,7 @@
             this.EasterEgg.Name = "EasterEgg";
             this.EasterEgg.Size = new System.Drawing.Size(48, 13);
             this.EasterEgg.TabIndex = 27;
-            this.EasterEgg.Text = "Ver α1.0";
+            this.EasterEgg.Text = "Ver α1.1";
             this.EasterEgg.DoubleClick += new System.EventHandler(this.EasterEgg_DoubleClick);
             // 
             // Form1
@@ -174,7 +174,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Client app α 1.0";
+            this.Text = "Client app α 1.1";
             this.ResumeLayout(false);
             this.PerformLayout();
 

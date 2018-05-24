@@ -9,6 +9,7 @@ namespace P2PNNClient
     public partial class Form1 : Form
     {
         string dataset = "dataset0.csv";
+        bool connected = false;
 
         private static String NNProgressLocation = "nnprogress.dnn";
 
@@ -98,34 +99,41 @@ namespace P2PNNClient
 
         private void DownloadCheck()
         {
-            string downloadLocation = "";
-            string customLocation = Config.downloadLocation;
-            string userName = Environment.UserName;
-
-            //checking if download location has been changed by the user
-            if (customLocation == "")
+            if (connected)
             {
-                string dirCheck = "C:/Users/" + userName + "/AppData/Local/Temp/DNN/";
-                bool exists = System.IO.Directory.Exists(dirCheck);
-                if (!exists)
-                    System.IO.Directory.CreateDirectory(dirCheck);
-                downloadLocation = dirCheck + dataset;
+                string downloadLocation = "";
+                string customLocation = Config.downloadLocation;
+                string userName = Environment.UserName;
+
+                //checking if download location has been changed by the user
+                if (customLocation == "")
+                {
+                    string dirCheck = "C:/Users/" + userName + "/AppData/Local/Temp/DNN/";
+                    bool exists = System.IO.Directory.Exists(dirCheck);
+                    if (!exists)
+                        System.IO.Directory.CreateDirectory(dirCheck);
+                    downloadLocation = dirCheck + dataset;
+                }
+
+                //checking wether user has set custom download location
+                if (customLocation != "")
+                    downloadLocation = customLocation + "/" + dataset;
+
+                string remoteUri = Config.URL ; //optimize
+                string fileName = dataset, myStringWebResource = null;
+                // Create a new WebClient instance.
+                WebClient myWebClient = new WebClient();
+                // Concatenate the domain with the Web resource filename.
+                myStringWebResource = remoteUri + fileName;
+                // Download the Web resource and save it into the current filesystem folder.
+                myWebClient.DownloadFile(myStringWebResource, @downloadLocation);
+                downloadCheckTXT.Text = "Download ... SUCCESSFUL";
+                System.Diagnostics.Process.Start(@downloadLocation);
             }
-
-            //checking wether user has set custom download location
-            if (customLocation != "")
-                downloadLocation = customLocation + "/" + dataset;
-
-            string remoteUri = Config.URL ; //optimize
-            string fileName = dataset, myStringWebResource = null;
-            // Create a new WebClient instance.
-            WebClient myWebClient = new WebClient();
-            // Concatenate the domain with the Web resource filename.
-            myStringWebResource = remoteUri + fileName;
-            // Download the Web resource and save it into the current filesystem folder.
-            myWebClient.DownloadFile(myStringWebResource, @downloadLocation);
-            downloadCheckTXT.Text = "Download ... SUCCESSFUL";
-            System.Diagnostics.Process.Start(@downloadLocation);
+            else
+            {
+                new Error("No connection ERROR", "No connection could me made to the server.", 255, 100).ShowDialog();
+            }
         }
 
         private void LaunchNN() //TODO Make custom path to nn in the settings menu
@@ -149,7 +157,6 @@ namespace P2PNNClient
         {
             bool pinging = false;
             Ping isPing = new Ping();
-            bool connected = false;
             String newUrl = Config.URL;
 
             try
