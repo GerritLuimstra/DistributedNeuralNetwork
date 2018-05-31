@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.IO.Compression;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Windows.Forms;
@@ -8,8 +9,11 @@ namespace P2PNNClient
 {
     public partial class Form1 : Form
     {
-        string dataset = "dataset0.csv";
+        //string dataset = "dataset0.csv";
+        //string archive = Config.token;
         bool connected = false;
+        string downloadLocation = "";
+        int count = 1;
 
         private static String NNProgressLocation = "nnprogress.dnn";
 
@@ -37,7 +41,6 @@ namespace P2PNNClient
                 if(Config.URL == "")
                 {
                     connected = false;
-                    //new Error("Blank link ERROR", "Please update the link via settings menu", 150, 100).ShowDialog();
                 }
                 else
                 {
@@ -48,7 +51,6 @@ namespace P2PNNClient
             }
             catch (PingException)
             {
-                //MessageBox.Show(pe.ToString());
             }
 
             if (connected)
@@ -101,7 +103,6 @@ namespace P2PNNClient
         {
             if (connected)
             {
-                string downloadLocation = "";
                 string customLocation = Config.downloadLocation;
                 string userName = Environment.UserName;
 
@@ -112,15 +113,15 @@ namespace P2PNNClient
                     bool exists = System.IO.Directory.Exists(dirCheck);
                     if (!exists)
                         System.IO.Directory.CreateDirectory(dirCheck);
-                    downloadLocation = dirCheck + dataset;
+                    downloadLocation = dirCheck + Config.token;
                 }
 
                 //checking wether user has set custom download location
                 if (customLocation != "")
-                    downloadLocation = customLocation + "/" + dataset;
+                    downloadLocation = customLocation + "\\" + Config.token + ".zip";
 
-                string remoteUri = Config.URL ; //optimize
-                string fileName = dataset, myStringWebResource = null;
+                string remoteUri = Config.URL ;
+                string fileName = "thezip.zip", myStringWebResource = null;
                 // Create a new WebClient instance.
                 WebClient myWebClient = new WebClient();
                 // Concatenate the domain with the Web resource filename.
@@ -128,7 +129,9 @@ namespace P2PNNClient
                 // Download the Web resource and save it into the current filesystem folder.
                 myWebClient.DownloadFile(myStringWebResource, @downloadLocation);
                 downloadCheckTXT.Text = "Download ... SUCCESSFUL";
-                System.Diagnostics.Process.Start(@downloadLocation);
+                //System.Diagnostics.Process.Start(@downloadLocation); //Opening the file
+
+                UnzipArchive();
             }
             else
             {
@@ -138,7 +141,7 @@ namespace P2PNNClient
 
         private void LaunchNN() //TODO Make custom path to nn in the settings menu
         {
-
+            //read txt file to start nn with custom settings
         }
 
         private void NNProgress()
@@ -207,6 +210,13 @@ namespace P2PNNClient
             {
                 nnProgressTXT.Text = "Neural network progress ... NOT RUNNING";
             }
+
+            //add check for Completed.txt
+            if(File.Exists(@Config.downloadLocation + "\\extracted\\Completed.txt") && count == 1)
+            {
+                ZipArchive();
+                count ++;
+            }
         }
 
         private void launchDNNBtn_Click(object sender, EventArgs e) // Launching the DNN
@@ -231,6 +241,33 @@ namespace P2PNNClient
             }
             else
                 debugBtn.Visible = false;
+        }
+
+        private void UnzipArchive()
+        {
+            /*
+            string startPath = @"c:\example\start";
+            string zipPath = @"c:\example\result.zip";
+            string extractPath = @"c:\example\extract";
+
+            ZipFile.CreateFromDirectory(startPath, zipPath);
+
+            ZipFile.ExtractToDirectory(zipPath, extractPath);
+             */
+
+
+            Directory.Delete(@Config.downloadLocation + "\\extracted", true); //deleting directory if it already exists
+            ZipFile.ExtractToDirectory(Config.downloadLocation + "\\" + Config.token + ".zip", Config.downloadLocation + "\\extracted");
+
+            ZipArchive();
+
+        }
+
+        private void ZipArchive()
+        {
+            File.Delete(Config.downloadLocation + "\\extracted\\Nieuwe map\\someconfig.dnncnf");
+            File.Delete(Config.downloadLocation + "\\" + Config.token + ".zip");
+            ZipFile.CreateFromDirectory(@Config.downloadLocation + "\\extracted", @Config.downloadLocation + "\\" + Config.token + ".zip");
         }
 
         private void EasterEgg_DoubleClick(object sender, EventArgs e)

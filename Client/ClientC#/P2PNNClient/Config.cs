@@ -32,7 +32,6 @@ namespace P2PNNClient
         public static void loadConfig()
         {
             string json = System.IO.File.ReadAllText(@Config.Location);
-            //MessageBox.Show(json); //debug
             dynamic configContents = JsonConvert.DeserializeObject(json);
             URL = configContents.URL;//setting variable 
             downloadLocation = configContents.downloadLocation;
@@ -43,7 +42,7 @@ namespace P2PNNClient
         public static void saveConfig()
         {
             LinkCheck();
-            String text = "{URL: \"" + Config.URL + "\", downloadLocation: \"" + Config.downloadLocation.Replace("\\", "\\\\") + "\", token: \"" + Config.token + "\", debug: \"" + "DNNDEBUG" + "\"}";
+            String text = "{URL: \"" + Config.URL + "\", downloadLocation: \"" + Config.downloadLocation.Replace("\\", "\\\\") + "\", token: \"" + Config.token + "\", debug: \"" + "false" + "\"}";
             System.IO.File.WriteAllText(@Config.Location, text);
         }
 

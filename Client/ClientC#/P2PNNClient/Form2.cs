@@ -8,6 +8,7 @@ namespace P2PNNClient
     {
         private Form1 parentForm;
         private bool isValid = false;
+        private bool connected = false;
 
         public Form2(Form1 form)
         {
@@ -56,12 +57,44 @@ namespace P2PNNClient
 
         private void TestConn(String url)
         {
-            bool pinging = false;
+            /////////////////////////////////////////////////////////////
+
+            string newUrl = url;
             Ping isPing = new Ping();
+            bool pinging = false;
 
             try
             {
-                PingReply reply = isPing.Send(url);
+                if (Config.URL == "")
+                {
+                    connected = false;
+                    //new Error("Blank link ERROR", "Please update the link via settings menu", 150, 100).ShowDialog();
+                }
+                else
+                {
+                    char last = Config.URL[Config.URL.Length - 1];
+                    bool isSlash = false;
+                    if (last.ToString() == "/")
+                        isSlash = true;
+                    if (newUrl.Contains("http://") && isSlash)
+                    {
+                        newUrl = newUrl.Remove(0, 7);
+                        newUrl = newUrl.Replace("/", "");
+                    }
+                    PingReply reply = isPing.Send(newUrl);
+                    pinging = reply.Status == IPStatus.Success;
+                    connected = true;
+                }
+            }
+            catch (PingException)
+            {
+            }
+
+            /////////////////////////////////////////////////////////////
+
+            try
+            {
+                PingReply reply = isPing.Send(newUrl);
                 pinging = reply.Status == IPStatus.Success;
                 isValid = true;
             }
