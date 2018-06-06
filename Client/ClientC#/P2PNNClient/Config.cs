@@ -69,8 +69,8 @@ namespace P2PNNClient
                         URL = "http://www." + URL;
                     else if (!httpCheck && wwwCheck)
                         URL = "http://" + URL;
-                    else if (!httpsCheck && !wwwCheck)
-                        URL = "https://www." + URL;
+                    //else if (!httpsCheck && !wwwCheck)
+                    //    URL = "https://www." + URL;
                     else if (!httpsCheck && wwwCheck)
                         URL = "http://" + URL;
                 }

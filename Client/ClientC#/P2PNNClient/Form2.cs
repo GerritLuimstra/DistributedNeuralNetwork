@@ -9,16 +9,21 @@ namespace P2PNNClient
         private Form1 parentForm;
         private bool isValid = false;
         private bool connected = false;
+        private bool validString = true;
 
         public Form2(Form1 form)
         {
             InitializeComponent();
             parentForm = form;
+            website.Visible = false;
+            websiteInput.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e) //save button
         {
-            SaveConfig();
+            TokenCheck();
+            if(validString)
+                SaveConfig();
         }
 
         private void SaveConfig()
@@ -30,6 +35,7 @@ namespace P2PNNClient
             {
                 Config.saveConfig();
                 parentForm.ConnTest();
+                parentForm.tokenCheck.Text = "Token check ... ";
                 this.Close();
             }
         }
@@ -111,7 +117,16 @@ namespace P2PNNClient
                 SaveConfig();
             }
         }
-
-        // TODO add token check. Maybe sent it to website and get a response?
+        
+        private void TokenCheck()
+        {
+            if (tokenInput.Text == "")
+            {
+                new Error("Empty string ERROR", "Please input a token", 170, 100).ShowDialog();
+                validString = false;
+            }
+            else
+                validString = true;
+        }
     }
 }

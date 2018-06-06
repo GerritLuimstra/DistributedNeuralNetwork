@@ -34,7 +34,7 @@
             this.ConnToServerTXT = new System.Windows.Forms.Label();
             this.tokenCheck = new System.Windows.Forms.Label();
             this.downloadCheckTXT = new System.Windows.Forms.Label();
-            this.launchNNTXT = new System.Windows.Forms.Label();
+            this.sftpConnTXT = new System.Windows.Forms.Label();
             this.launchDNNBtn = new System.Windows.Forms.Button();
             this.nnProgressTXT = new System.Windows.Forms.Label();
             this.uploadMatricesTXT = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.debugBtn = new System.Windows.Forms.Button();
             this.EasterEgg = new System.Windows.Forms.Label();
+            this.UploadBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // settingsBtn
@@ -81,14 +82,14 @@
             this.downloadCheckTXT.TabIndex = 19;
             this.downloadCheckTXT.Text = "Download ... ";
             // 
-            // launchNNTXT
+            // sftpConnTXT
             // 
-            this.launchNNTXT.AutoSize = true;
-            this.launchNNTXT.Location = new System.Drawing.Point(16, 89);
-            this.launchNNTXT.Name = "launchNNTXT";
-            this.launchNNTXT.Size = new System.Drawing.Size(116, 13);
-            this.launchNNTXT.TabIndex = 20;
-            this.launchNNTXT.Text = "Launch neural network";
+            this.sftpConnTXT.AutoSize = true;
+            this.sftpConnTXT.Location = new System.Drawing.Point(16, 112);
+            this.sftpConnTXT.Name = "sftpConnTXT";
+            this.sftpConnTXT.Size = new System.Drawing.Size(150, 13);
+            this.sftpConnTXT.TabIndex = 20;
+            this.sftpConnTXT.Text = "Connection to SFTP server ... ";
             // 
             // launchDNNBtn
             // 
@@ -103,7 +104,7 @@
             // nnProgressTXT
             // 
             this.nnProgressTXT.AutoSize = true;
-            this.nnProgressTXT.Location = new System.Drawing.Point(16, 112);
+            this.nnProgressTXT.Location = new System.Drawing.Point(16, 89);
             this.nnProgressTXT.Name = "nnProgressTXT";
             this.nnProgressTXT.Size = new System.Drawing.Size(137, 13);
             this.nnProgressTXT.TabIndex = 22;
@@ -123,9 +124,9 @@
             this.uploadStatus.AutoSize = true;
             this.uploadStatus.Location = new System.Drawing.Point(16, 158);
             this.uploadStatus.Name = "uploadStatus";
-            this.uploadStatus.Size = new System.Drawing.Size(56, 13);
+            this.uploadStatus.Size = new System.Drawing.Size(87, 13);
             this.uploadStatus.TabIndex = 25;
-            this.uploadStatus.Text = "Upload ... ";
+            this.uploadStatus.Text = "Upload status ... ";
             // 
             // timer1
             // 
@@ -150,21 +151,32 @@
             this.EasterEgg.Name = "EasterEgg";
             this.EasterEgg.Size = new System.Drawing.Size(48, 13);
             this.EasterEgg.TabIndex = 27;
-            this.EasterEgg.Text = "Ver α1.3";
+            this.EasterEgg.Text = "Ver α1.5";
             this.EasterEgg.DoubleClick += new System.EventHandler(this.EasterEgg_DoubleClick);
+            // 
+            // UploadBtn
+            // 
+            this.UploadBtn.Location = new System.Drawing.Point(215, 20);
+            this.UploadBtn.Name = "UploadBtn";
+            this.UploadBtn.Size = new System.Drawing.Size(75, 23);
+            this.UploadBtn.TabIndex = 28;
+            this.UploadBtn.Text = "Upload";
+            this.UploadBtn.UseVisualStyleBackColor = true;
+            this.UploadBtn.Click += new System.EventHandler(this.UploadBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 189);
+            this.Controls.Add(this.UploadBtn);
             this.Controls.Add(this.EasterEgg);
             this.Controls.Add(this.debugBtn);
             this.Controls.Add(this.uploadStatus);
             this.Controls.Add(this.uploadMatricesTXT);
             this.Controls.Add(this.nnProgressTXT);
             this.Controls.Add(this.launchDNNBtn);
-            this.Controls.Add(this.launchNNTXT);
+            this.Controls.Add(this.sftpConnTXT);
             this.Controls.Add(this.downloadCheckTXT);
             this.Controls.Add(this.tokenCheck);
             this.Controls.Add(this.ConnToServerTXT);
@@ -183,9 +195,8 @@
         #endregion
         private System.Windows.Forms.Button settingsBtn;
         private System.Windows.Forms.Label ConnToServerTXT;
-        private System.Windows.Forms.Label tokenCheck;
         private System.Windows.Forms.Label downloadCheckTXT;
-        private System.Windows.Forms.Label launchNNTXT;
+        private System.Windows.Forms.Label sftpConnTXT;
         private System.Windows.Forms.Button launchDNNBtn;
         private System.Windows.Forms.Label nnProgressTXT;
         private System.Windows.Forms.Label uploadMatricesTXT;
@@ -193,6 +204,8 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button debugBtn;
         private System.Windows.Forms.Label EasterEgg;
+        private System.Windows.Forms.Button UploadBtn;
+        public System.Windows.Forms.Label tokenCheck;
     }
 }
 
