@@ -7,3 +7,4 @@ MNIST/*
 
 #Ignore the dataset splits
 dataset*.csv
+*.csv
