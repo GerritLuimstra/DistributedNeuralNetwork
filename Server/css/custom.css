@@ -21,3 +21,56 @@ main {
 .status.being-trained {
     background: #ff9800;
 }
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    z-index: 9999;
+
+    display: none;
+}
+.popup {
+    width: 500px;
+    height: 300px;
+    position: fixed;
+    background: white;
+    margin: auto;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 99999;
+    padding: 20px;
+
+    display: none;
+}
+
+.popup .title {
+    width: 100%;
+    float: left;
+}
+.popup .title h6 {
+    line-height: 30px;
+}
+
+.popup .content {
+    float: left;
+    width: 100%;
+}
+
+.popup .content .close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    margin: 0;
+    float: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.popup .content input[type=file]{
+    display: none;
+}
+
+.fileUpload {
+    height: 200px;
+}

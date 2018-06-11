@@ -20,6 +20,7 @@
 
         mkdir("uploads/projects/" . $token);
         mkdir("uploads/projects/" . $token . "/splits");
+        mkdir("uploads/projects/" . $token . "/results");
 
         header("Location: index.php");
         exit;
