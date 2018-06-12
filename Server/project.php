@@ -55,7 +55,9 @@
         <div class="container">
             <div class="row">
                 <div class="col s2">
-                    <img src="uploads/<?= sanitize($project->picture) ?>" alt="<?= sanitize($project->name) ?>" class="circle responsive-img" style="width: 100px; height: 100px;">
+                    <a href="edit.php?id=<?= $project->id ?>">
+                        <img src="uploads/<?= sanitize($project->picture) ?>" alt="<?= sanitize($project->name) ?>" class="circle responsive-img" style="width: 100px; height: 100px;">
+                    </a>
                 </div>
                 <div class="col s10">
                     <h2>Project <span style="color: #4caf50"><?= sanitize($project->name) ?></span></h2>

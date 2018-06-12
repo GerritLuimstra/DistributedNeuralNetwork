@@ -1,7 +1,8 @@
 <?php
-    require "php/auth.php";
-    require "php/conn.php";
-    require "php/functions.php";
+require "php/auth.php";
+require "php/conn.php";
+require "php/functions.php";
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,13 +30,23 @@
             <a class="waves-effect waves-light btn blue lighten-1" href="new_project.php"><i class="material-icons left">add</i>Add</a>
             <ul class="collection">
                 <?php foreach(get_projects($_SESSION['userID']) as $project){ ?>
-                    <li class="collection-item avatar">
-                        <img src="uploads/<?= sanitize($project->picture) ?>" alt="<?= sanitize($project->name) ?>" class="circle">
-                        <a href="project.php?id=<?= $project->id ?>"><span class="title"><?= sanitize($project->name) ?></span></a>
-                        <p><i><?= short_print(sanitize($project->desc), 100) ?></i></p>
-                        <a href="#!" class="secondary-content"><i class="material-icons">folder</i></a>
+                <li class="collection-item avatar">
+                    <img src="uploads/<?= sanitize($project->picture) ?>" alt="<?= sanitize($project->name) ?>" class="circle">
+                    <a href="project.php?id=<?= $project->id ?>"><span class="title"><?= sanitize($project->name) ?></span></a>
+                    <p><i><?= short_print(sanitize($project->desc), 100) ?></i></p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">folder</i></a>
+                    <form method='post' action='#'>
+                        <input type='button' name='button_delete'>
+                    </form>
+                    <?php
+                    if(isset($_POST['button_delete'])){
+                    $sql = "DELETE FROM projects WHERE id={$project->id}";
+                    $conn->query($sql);
+                    }
+                    ?>
                     </li>
-                <?php } ?>
+                    <?php }
+                    ?>
             </ul>
         </div>
 
