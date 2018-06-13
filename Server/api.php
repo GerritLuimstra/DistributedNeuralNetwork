@@ -4,7 +4,7 @@ require "php/conn.php";
 require "php/functions.php";
 
 // Whenever a user requests a project by a given token, we create a zip file for the neural network and dataset
-if(isset($_GET['token']) && !isset($_FILES['result'])){
+if(isset($_GET['token']) && !isset($_FILES['file'])){
     $token = $_GET['token'];
     if(!project_exists($token)) die("Invalid request. This token does not exist");
     $projectID = get_id_by_token($token);
@@ -51,11 +51,12 @@ if(isset($_GET['token']) && !isset($_FILES['result'])){
     }
 }
 // A client applet is trying to upload something
-else if(isset($_FILES['result'])){
+else if(isset($_FILES['file'])){
+
     if(!isset($_GET['token'])) die("Invalid request. Token is missing");
-    if(!file_exists($_FILES['result']['tmp_name']) || !is_uploaded_file($_FILES['result']['tmp_name'])) die("Please provide a file");
+    if(!file_exists($_FILES['file']['tmp_name']) || !is_uploaded_file($_FILES['file']['tmp_name'])) die("Please provide a file");
     $token = $_GET['token'];
-    $result = $_FILES['result'];
+    $result = $_FILES['file'];
     $splitName = pathinfo($result["name"], PATHINFO_FILENAME);
     $extension = pathinfo($result["name"], PATHINFO_EXTENSION);
     if($extension != "zip") die("Invalid file. Needs to be a ZIP file");

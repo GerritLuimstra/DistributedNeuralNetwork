@@ -14,10 +14,8 @@ if (isset($_POST['submit'])) {
     $name = sanitize(preg_replace("/[^A-Za-z0-9 ]/", '', mb_substr($_POST['name'], 0, 100)));
     $desc = sanitize(mb_substr($_POST['description'], 0, 500));
     $id = $project->id;
-    echo $id;
-    $token = generate_token($name);
     
-    $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/Server/img/";
+    $target_dir = "uploads/projects/";
     $target_file = $target_dir . basename($_FILES["uploadFile"]["name"]);
     move_uploaded_file($_FILES["uploadFile"]["tmp_name"], $target_file);
     $picture = "/Server/img/" . basename($_FILES["uploadFile"]["name"]);
@@ -61,7 +59,7 @@ if (isset($_POST['submit'])) {
 
                 <h6>"<?= sanitize($project->desc) ?>"</h6>
 
-                <form action="edit.php" method="POST" enctype="multipart/form-data">
+                <form action="edit.php?id=<?= sanitize($project->id) ?>" method="POST" enctype="multipart/form-data">
                     <input type="file" name="uploadFile">
                     <input type="text" name="name">
                     <input type="text" name="description">
