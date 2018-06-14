@@ -8,7 +8,7 @@ namespace P2PNNClient
 {
     public partial class Debug : Form
     {
-        //Give class another name
+        //showing raw data
 
         public Debug()
         {

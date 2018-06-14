@@ -39,14 +39,14 @@ namespace P2PNNClient
             debug = configContents.debug;
         }
 
-        public static void saveConfig()
+        public static void saveConfig() //writing to confing file
         {
             LinkCheck();
             String text = "{URL: \"" + Config.URL + "\", downloadLocation: \"" + Config.downloadLocation.Replace("\\", "\\\\") + "\", token: \"" + Config.token + "\", debug: \"" + "false" + "\"}";
             System.IO.File.WriteAllText(@Config.Location, text);
         }
 
-        private static void LinkCheck()
+        private static void LinkCheck() //pinging website with link modification (becuase ping does not support http)
         {
             //checking if the link has http:// and or https, and www. in it
             bool httpCheck = URL.Contains("http://");

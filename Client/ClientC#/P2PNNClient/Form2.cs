@@ -6,6 +6,7 @@ namespace P2PNNClient
 {
     public partial class Form2 : Form
     {
+        //setting up initial variables
         private Form1 parentForm;
         private bool isValid = false;
         private bool connected = false;
@@ -19,14 +20,14 @@ namespace P2PNNClient
             websiteInput.Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e) //save button
+        private void button2_Click(object sender, EventArgs e) //save button with link validation and empty string check
         {
             TokenCheck();
             if(validString)
                 SaveConfig();
         }
 
-        private void SaveConfig()
+        private void SaveConfig() //saving new config with token update on main window
         {
             Config.URL = websiteInput.Text;
             Config.token = tokenInput.Text;
@@ -36,6 +37,9 @@ namespace P2PNNClient
                 Config.saveConfig();
                 parentForm.ConnTest();
                 parentForm.tokenCheck.Text = "Token check ... ";
+                parentForm.downloadCheckTXT.Text = "Download ... ";
+                parentForm.sftpConnTXT.Text = "Connection to SFTP server ... ";
+                parentForm.uploadStatus.Text = "Upload status ... ";
                 this.Close();
             }
         }
@@ -110,7 +114,7 @@ namespace P2PNNClient
             }
         }
 
-        private void websiteInput_KeyDown(object sender, KeyEventArgs e)
+        private void websiteInput_KeyDown(object sender, KeyEventArgs e) //checking for key input to save config
         {
             if (e.KeyData == Keys.Enter)
             {
@@ -118,7 +122,7 @@ namespace P2PNNClient
             }
         }
         
-        private void TokenCheck()
+        private void TokenCheck() //checking if the token textbox has anything written in it
         {
             if (tokenInput.Text == "")
             {

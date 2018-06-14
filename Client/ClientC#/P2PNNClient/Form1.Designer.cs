@@ -43,6 +43,7 @@
             this.debugBtn = new System.Windows.Forms.Button();
             this.EasterEgg = new System.Windows.Forms.Label();
             this.UploadBtn = new System.Windows.Forms.Button();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // settingsBtn
@@ -151,7 +152,7 @@
             this.EasterEgg.Name = "EasterEgg";
             this.EasterEgg.Size = new System.Drawing.Size(48, 13);
             this.EasterEgg.TabIndex = 27;
-            this.EasterEgg.Text = "Ver α1.5";
+            this.EasterEgg.Text = "Ver α1.7";
             this.EasterEgg.DoubleClick += new System.EventHandler(this.EasterEgg_DoubleClick);
             // 
             // UploadBtn
@@ -163,6 +164,11 @@
             this.UploadBtn.Text = "Upload";
             this.UploadBtn.UseVisualStyleBackColor = true;
             this.UploadBtn.Click += new System.EventHandler(this.UploadBtn_Click);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 2000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -195,17 +201,18 @@
         #endregion
         private System.Windows.Forms.Button settingsBtn;
         private System.Windows.Forms.Label ConnToServerTXT;
-        private System.Windows.Forms.Label downloadCheckTXT;
-        private System.Windows.Forms.Label sftpConnTXT;
         private System.Windows.Forms.Button launchDNNBtn;
         private System.Windows.Forms.Label nnProgressTXT;
         private System.Windows.Forms.Label uploadMatricesTXT;
-        private System.Windows.Forms.Label uploadStatus;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button debugBtn;
         private System.Windows.Forms.Label EasterEgg;
         private System.Windows.Forms.Button UploadBtn;
         public System.Windows.Forms.Label tokenCheck;
+        public System.Windows.Forms.Label downloadCheckTXT;
+        public System.Windows.Forms.Label sftpConnTXT;
+        public System.Windows.Forms.Label uploadStatus;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 
