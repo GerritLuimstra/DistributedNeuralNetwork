@@ -228,18 +228,7 @@ a.social:hover {
   border-color: #ff99ff;
 }
 
-.bottomfurtherinformation {
-  height: 600px;
-  width:1300px;
-  background-color: white;
-  border-radius: 6px;
-  margin-top: 30px;
-  border-bottom: 4px solid #ccc;
-  padding: 20px 40px 40px;
-  margin-left: 110px;
-}
-
-.wrapper {
+.wrapperus {
   height: 1500px;
   width: 1400px;
   margin: 0 auto;
@@ -282,6 +271,39 @@ a.social:hover {
   background-color:white;
 }
 
-#bottomright {
+.wrapper {
+  height: 2000px;
+  width: 1400px;
+  margin: 0 auto;
+  margin-top: 70px;
   background-color: white;
+  border-bottom: 4px solid #ccc;
+  border-radius: 6px;
+  padding: 20px 40px 40px;
+  text-align: left;
+}
+
+.wrapper:hover {
+  border-color: #ff99ff;
+}
+
+#neuralnetwork {
+  width: 500px;
+  height: 200px;
+  padding-left: 100px;
+}
+
+#informationsystem {
+  width: 600px;
+  height: 300px;
+}
+
+#systeminfrastructure {
+  width: 600px;
+  height: 300px;
+}
+
+#ourpicture {
+  width:300;
+  height: 300;
 }

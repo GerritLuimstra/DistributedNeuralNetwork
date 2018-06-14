@@ -21,16 +21,59 @@
 		</div>
 		
 		<main>
-			<div class="leftneuralnetwork">
-			</div>
-
-			<div class="toprightneuralnetwork">
-			</div>
-
-			<div class="bottomrightneuralnetwork">
-			</div>
-
-			<div class="bottomfurtherinformation">
+			<div class="wrapper">
+				<h1 align="center">Project DNN</h1>
+				<hr>
+				
+				<h2 align="center">Introduction</h2>
+				<h3>Who are we?</h3>
+				<p>
+					We are a group of Information Technology (IT) students. We are currently living in Emmen in the North East of the Netherlands and we all study at NHL Stenden. Our team is composed of five members from five different countries. These countries are, Aruba, Brazil, Estonia, The Netherlands and Latvia. 
+				</p>
+				
+				<h3>What is our project?</h3>
+				<p>
+					Our project is based on Neural Networks. We have attempted to speed up the training time for a Neural Network by creating a system of Distributed Neural Networks. The distributed Neural Networks will work by splitting up the workload among various computers and uploading all of the information into a single Neural Network. Imagine you work in a one man restraunt. All of the tasks are given to you and no one is around to help. Know imagine to working on that same restraunt with four other friends. The tasks are split amongst yourselves and you have a smaller workload on yourself and the different tasks that have to be done around the restraunt are done faster. This is the basic idea of our project. 
+				</p>
+				
+				<h3>Why are we doing this?</h3>
+				<p>
+					Two members of our group came up with the idea of this project and pitched it to the rest of us. The two members are Gerrit Luimstra and Rudolph Praulins. We decided to go ahead with the idea because of the challenging aspect of the project put together with our own thoughts of what glory would look like if we were capable of successfully finishing the project. 
+				</p>
+				<hr>
+				
+				<h2 align="center">Body</h2>
+				<h3>What does our system look like?</h3>
+				<p>
+					Our system is a Distributed Neural Network which will allow its users to increase the speed of teching a Neural Network at a relatively low cost of accuracy. 
+				</p>
+				
+				<h4>Description of the Information System</h4>
+				<img src="images/informationsystem.jpg" alt="An image demonstrating the information system for our project" id="informationsystem">
+				<p>The components that make up the above figure:</p>
+				<ol>
+					<li>Split the data set into multiple splits</li>
+					<li>The "Clients" each download a split of the data set</li>
+					<li>The clients train their own copy of the Neural Network locally</li>
+					<li>When they are done training, the clients send back their final observations (weight matricies)</li>
+					<li>The server merges the client's observations with the parent Neural Network</li>
+				</ol>
+				
+				<h4>System infrastructure</h4>
+				<img src="images/systeminfrastructure.jpg" alt=" An image demonstrating the system infrastructure" id="systeminfrastructure">
+				<p>The components that make up the above figure:</p>
+				<ol>
+					<li>The server that distributes the data and the Neural Networks to the clients</li>
+					<li>The client software applets that handle the downloading of the datasets/Neural Network and training of the Neural Network</li>
+					<li>The local Neural Networks</li>
+					<li>The master Neural Network</li>
+				</ol>
+				<hr>
+				
+				<h2 align="center">Conclusion</h2>
+				<p>
+					In conclusion, this project has provided as both an opportunity for high amounts of individual research as also a challenge for all members of the team. In the beginning of the project we had come up with ideas on how to use the DNN to help diagnose pneumonia in poor African countries. However, we decided to work towards acheiving a proof of concept for the project and after this is move on towards more ambitious steps. The team has been able to create the DNN while maintaining a rate of accuracy which is above 90%. Thank you for reading and if you are a group of students or just somebody who wants to work with Neural Networks, don't be scared by what seams to be a complicated field. Take small steps and soon, you'll be creating your own Neural Network and solving your own set of problems. 
+				</p>
 			</div>
 		</main>
 		
