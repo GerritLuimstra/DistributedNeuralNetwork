@@ -7,6 +7,7 @@ using System.Net.NetworkInformation;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Net.Mime;
+using System.Net.Http;
 
 namespace P2PNNClient
 {
@@ -152,8 +153,8 @@ namespace P2PNNClient
         {
             timer2.Start();
             //System.Diagnostics.Process.Start("cmd.exe", "python " + downloadLocation + "\\DNNExtracted\\network.py"); //right now hardcoded
-            MessageBox.Show(Config.downloadLocation + "\\DNNExtracted\\network.py");
-            System.Diagnostics.Process.Start(@Config.downloadLocation + "\\DNNExtracted\\network.py");
+            MessageBox.Show(Config.downloadLocation + "\\DNNExtracted\\network.py <--- LaunchNN()");
+            System.Diagnostics.Process.Start("python" , @Config.downloadLocation + "\\DNNExtracted\\network.py");
             //ZipArchive();
         }
 
@@ -221,7 +222,7 @@ namespace P2PNNClient
             //add check for Completed.txt
             if(File.Exists(@Config.downloadLocation + "\\extracted\\Completed.txt") && count == 1)
             {
-                ZipArchive();
+                //ZipArchive();
                 count ++;
             }
         }
@@ -316,18 +317,28 @@ namespace P2PNNClient
 
         private void FileUploadToPHP()
         {
-            var uploadFile = @Config.downloadLocation + "\\DNNResult\\" + /*filename*/ "dataset0.csv.zip";
-            MessageBox.Show(uploadFile);
-            System.Net.WebClient myClient = new System.Net.WebClient();
-            myClient.Headers.Add("Content-Type", "binary/octet-stream");
-            byte[] result = myClient.UploadFile(Config.URL + "system/api.php?token=" + Config.token, "POST", uploadFile);
+            var uploadFile = @Config.downloadLocation + "DNNResult\\" + filename;
+            //MessageBox.Show(uploadFile);
+            //MessageBox.Show(File.Exists(uploadFile).ToString());
+            //System.Net.WebClient myClient = new System.Net.WebClient();
+            //myClient.Headers.Add("Content-Type", "binary/octet-stream");
+            //byte[] result = myClient.UploadFile(Config.URL + "system/api.php?token=" + Config.token, "POST", uploadFile);
+
+
+            //string s = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
+            //MessageBox.Show(s);
+
+
+            WebClient wc = new WebClient();
+            wc.Headers.Add("Content-Type", "binary/octet-stream");
+            byte[] result = wc.UploadFile(Config.URL + "system/api.php?token=" + Config.token, "POST", uploadFile);
+            string res = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
+
             MessageBox.Show("Uploaded, i think");
 
-            //Directory.Delete(Config.downloadLocation + "\\DNNExtracted", true);
-            //Directory.Delete(Config.downloadLocation + "\\DNNResult", true);
+            Directory.Delete(Config.downloadLocation + "\\DNNExtracted", true);
+            Directory.Delete(Config.downloadLocation + "\\DNNResult", true);
 
-            string s = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
-            MessageBox.Show(s);
         }
 
         private void EasterEgg_DoubleClick(object sender, EventArgs e) //easter egg
@@ -337,7 +348,8 @@ namespace P2PNNClient
 
         private void UploadBtn_Click(object sender, EventArgs e) //shows custom message box if everything was successful
         {
-            FileUploadToPHP();
+            //FileUploadToPHP();
+            LaunchNN();
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -345,7 +357,8 @@ namespace P2PNNClient
             if (File.Exists(Config.downloadLocation + "\\DNNExtracted\\done.txt"))
             {
                 timer2.Stop();
-                ZipArchive();
+                MessageBox.Show("File exists!");
+                //ZipArchive();
             }
         }
     }
