@@ -29,3 +29,34 @@ C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\obj\Debug\P2PNNClient
 C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\obj\Debug\P2PNNClient.Debug.resources
 C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\bin\Debug\Renci.SshNet.dll
 C:\Users\Erik Naljota\source\repos\P2PNNClient\P2PNNClient\bin\Debug\Renci.SshNet.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\P2PNNClient.exe.config
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\P2PNNClient.exe
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\P2PNNClient.pdb
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\Microsoft.Web.Infrastructure.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\Newtonsoft.Json.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\Renci.SshNet.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.Helpers.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.Mvc.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.Razor.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.WebPages.Deployment.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.WebPages.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.WebPages.Razor.dll
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\Newtonsoft.Json.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\Renci.SshNet.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.Helpers.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.Mvc.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.Razor.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.WebPages.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.WebPages.Deployment.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\bin\Debug\System.Web.WebPages.Razor.xml
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.csprojAssemblyReference.cache
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.Error.resources
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.Form1.resources
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.Form2.resources
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.Debug.resources
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.Properties.Resources.resources
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.csproj.GenerateResource.cache
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.csproj.CoreCompileInputs.cache
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.csproj.CopyComplete
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.exe
+G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Client\ClientC#\P2PNNClient\obj\Debug\P2PNNClient.pdb

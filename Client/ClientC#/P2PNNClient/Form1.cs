@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using System.Net.Mime;
 using System.Net.Http;
+using System.Diagnostics;
 
 namespace P2PNNClient
 {
@@ -132,7 +133,7 @@ namespace P2PNNClient
                     }
                     catch
                     {
-                        MessageBox.Show("no datasets to download !!!MAKE BETTER!!!");
+                        new Error("No more data sets.", "The data set pool appears to be empty.", 300, 80).ShowDialog();
                     }
                     if(isTrue)
                         UnzipArchive(filename);
@@ -149,13 +150,35 @@ namespace P2PNNClient
             }
         }
 
+        private string GetPythonPath()
+        {
+            string path = Path.GetPathRoot(Environment.SystemDirectory);
+            return path + "Users\\" + Environment.UserName + "\\AppData\\Local\\Programs\\Python\\Python36\\python.exe";
+        }
+
         private void LaunchNN() //TODO Make custom path to nn in the settings menu
         {
-            timer2.Start();
-            //System.Diagnostics.Process.Start("cmd.exe", "python " + downloadLocation + "\\DNNExtracted\\network.py"); //right now hardcoded
-            MessageBox.Show(Config.downloadLocation + "\\DNNExtracted\\network.py <--- LaunchNN()");
-            System.Diagnostics.Process.Start("python" , @Config.downloadLocation + "\\DNNExtracted\\network.py");
-            //ZipArchive();
+            createBatchFile();
+            MessageBox.Show(File.Exists(@Config.downloadLocation + "\\DNNExtracted\\start.cmd").ToString());
+
+            var startInfo = new ProcessStartInfo();
+            startInfo.FileName = @Config.downloadLocation + "\\DNNExtracted\\start.cmd";
+            startInfo.WorkingDirectory = @Config.downloadLocation + "\\DNNExtracted\\"; // working directory
+            Process proc = Process.Start(startInfo);
+
+            File.Delete(@Config.downloadLocation + "\\DNNExtracted\\start.cmd");
+
+            ZipArchive();
+        }
+
+        private void createBatchFile()
+        {
+            string file = @Config.downloadLocation + "\\DNNExtracted\\start.cmd";
+            using (StreamWriter sw = File.CreateText(file))
+            {
+                sw.WriteLine("@echo off");
+                sw.WriteLine("start network.py");
+            }
         }
 
         private void NNProgress() //reading the current progress of the neural network
@@ -253,6 +276,15 @@ namespace P2PNNClient
 
         private void UnzipArchive(string archive)
         {
+            if (Directory.Exists(Config.downloadLocation + "\\DNNExtracted"))
+            {
+                Directory.Delete(Config.downloadLocation + "\\DNNExtracted", true);
+            }
+            if (Directory.Exists(Config.downloadLocation + "\\DNNResult"))
+            {
+                Directory.Delete(Config.downloadLocation + "\\DNNResult", true);
+            }
+
             //Directory.Delete(@Config.downloadLocation + "\\extracted", true); //deleting directory if it already exists
             ZipFile.ExtractToDirectory(Config.downloadLocation + "\\" + archive, Config.downloadLocation + "\\DNNExtracted");
             File.Delete(Config.downloadLocation + "\\" + archive);
@@ -272,7 +304,7 @@ namespace P2PNNClient
 
             //File.Delete(Config.downloadLocation + "\\DNNExtracted\\");
             //File.Delete(Config.downloadLocation + "\\" + Config.token + ".zip");
-            System.IO.Directory.CreateDirectory(downloadLocation + "\\DNNResult");
+            System.IO.Directory.CreateDirectory(@Config.downloadLocation + "\\DNNResult");
             ZipFile.CreateFromDirectory(@Config.downloadLocation + "\\DNNExtracted", @Config.downloadLocation + "\\DNNResult\\" + filename);
 
             //FileUploadSFTP();
@@ -317,24 +349,13 @@ namespace P2PNNClient
 
         private void FileUploadToPHP()
         {
-            var uploadFile = @Config.downloadLocation + "DNNResult\\" + filename;
-            //MessageBox.Show(uploadFile);
-            //MessageBox.Show(File.Exists(uploadFile).ToString());
-            //System.Net.WebClient myClient = new System.Net.WebClient();
-            //myClient.Headers.Add("Content-Type", "binary/octet-stream");
-            //byte[] result = myClient.UploadFile(Config.URL + "system/api.php?token=" + Config.token, "POST", uploadFile);
-
-
-            //string s = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
-            //MessageBox.Show(s);
-
-
+            string uploadFile = @Config.downloadLocation + "\\DNNResult\\" + filename;
+            
             WebClient wc = new WebClient();
             wc.Headers.Add("Content-Type", "binary/octet-stream");
-            byte[] result = wc.UploadFile(Config.URL + "system/api.php?token=" + Config.token, "POST", uploadFile);
+            string url = Config.URL + "system/api.php?token=" + Config.token;
+            byte[] result = wc.UploadFile(url, "POST", uploadFile);
             string res = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
-
-            MessageBox.Show("Uploaded, i think");
 
             Directory.Delete(Config.downloadLocation + "\\DNNExtracted", true);
             Directory.Delete(Config.downloadLocation + "\\DNNResult", true);
