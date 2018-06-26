@@ -1,4 +1,5 @@
-<form action="api.php?token=STENDENS-ab7a0512b383591b0c137d6ed1953c48634431c7" method="post" enctype="multipart/form-data">
-    <input type="file" name="result">
+
+<form action="api.php?token=MNIST20-7c304963cec03b5831792669c79756f6bdd73d2c" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
     <input type="submit">
 </form>

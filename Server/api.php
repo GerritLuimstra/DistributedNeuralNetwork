@@ -74,6 +74,21 @@ else if(isset($_FILES['file'])){
         $zip->close();
 
         update_split_status($projectID, $splitName, "2");
+
+        echo $token;
+        // REMOVE THIS HARDCODED GARBAGE
+        if($token == "MNIST20-7c304963cec03b5831792669c79756f6bdd73d2c"){
+            if($splitName == "dataset0.csv"){
+                fopen("php/results/client1.txt", "w");
+            }
+            else if($splitName == "dataset1.csv"){
+                fopen("php/results/client2.txt", "w");
+            }
+            else if($splitName == "dataset2.csv"){
+                fopen("php/results/client3.txt", "w");
+            }
+        }
+
         unlink($zipLoc);
 
         exit;
