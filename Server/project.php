@@ -116,7 +116,7 @@
                 <h6>Results</h6>
                 <?php if(can_merge($project->id)){ ?>
                     <p>All your datasets have been trained. You can now merge them.</p>
-                    <a class="waves-effect waves-light btn blue lighten-1" href="#" id="mergeDatasets"><i class="material-icons left">settings</i>Merge</a>
+                    <a class="waves-effect waves-light btn blue lighten-1" href="php/merger.php?project_id=<?= sanitize($project->id)?>" id="mergeDatasets"><i class="material-icons left">settings</i>Merge</a>
                 <?php } else { ?>
                     <p>As soon as the training of all datasets is done, merging will be available.</p>
                     <a class="waves-effect waves-light btn disabled blue lighten-1" href="#" id="mergeDatasets"><i class="material-icons left">settings</i>Merge</a>

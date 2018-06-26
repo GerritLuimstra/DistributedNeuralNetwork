@@ -180,3 +180,30 @@ def split(dataset, split_amount):
             row = row.strip()
             row = row.split(',')
             mycsv.writerow(row)
+
+            
+# number of input, hidden and output nodes
+input_nodes = 784
+hidden_nodes = 200
+output_nodes = 10
+learning_rate = 0.1
+
+# Create the neural network object
+n = NeuralNetwork(input_nodes, hidden_nodes, output_nodes, learning_rate)
+
+# Find the csv file
+files = [f for f in os.listdir('.') if os.path.isfile(f)]
+csv_file = ""
+for f in files:
+    if ".csv" in f:
+        csv_file = f
+        break
+
+# Possibly train a neural network
+train_nn(n, data_set = csv_file, epochs = 5)
+
+# Save the model
+n.saveModel("mnist")
+
+# Create the done file
+fopen("done.txt", "w")

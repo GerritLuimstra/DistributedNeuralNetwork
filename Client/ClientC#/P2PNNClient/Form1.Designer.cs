@@ -42,8 +42,9 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.debugBtn = new System.Windows.Forms.Button();
             this.EasterEgg = new System.Windows.Forms.Label();
-            this.UploadBtn = new System.Windows.Forms.Button();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // settingsBtn
@@ -59,7 +60,7 @@
             // ConnToServerTXT
             // 
             this.ConnToServerTXT.AutoSize = true;
-            this.ConnToServerTXT.Location = new System.Drawing.Point(16, 20);
+            this.ConnToServerTXT.Location = new System.Drawing.Point(32, 21);
             this.ConnToServerTXT.Name = "ConnToServerTXT";
             this.ConnToServerTXT.Size = new System.Drawing.Size(120, 13);
             this.ConnToServerTXT.TabIndex = 17;
@@ -68,7 +69,7 @@
             // tokenCheck
             // 
             this.tokenCheck.AutoSize = true;
-            this.tokenCheck.Location = new System.Drawing.Point(16, 43);
+            this.tokenCheck.Location = new System.Drawing.Point(32, 44);
             this.tokenCheck.Name = "tokenCheck";
             this.tokenCheck.Size = new System.Drawing.Size(86, 13);
             this.tokenCheck.TabIndex = 18;
@@ -77,20 +78,20 @@
             // downloadCheckTXT
             // 
             this.downloadCheckTXT.AutoSize = true;
-            this.downloadCheckTXT.Location = new System.Drawing.Point(16, 66);
+            this.downloadCheckTXT.Location = new System.Drawing.Point(32, 67);
             this.downloadCheckTXT.Name = "downloadCheckTXT";
-            this.downloadCheckTXT.Size = new System.Drawing.Size(70, 13);
+            this.downloadCheckTXT.Size = new System.Drawing.Size(143, 13);
             this.downloadCheckTXT.TabIndex = 19;
-            this.downloadCheckTXT.Text = "Download ... ";
+            this.downloadCheckTXT.Text = "Download and extraction  ... ";
             // 
             // sftpConnTXT
             // 
             this.sftpConnTXT.AutoSize = true;
-            this.sftpConnTXT.Location = new System.Drawing.Point(16, 112);
+            this.sftpConnTXT.Location = new System.Drawing.Point(32, 113);
             this.sftpConnTXT.Name = "sftpConnTXT";
-            this.sftpConnTXT.Size = new System.Drawing.Size(150, 13);
+            this.sftpConnTXT.Size = new System.Drawing.Size(175, 13);
             this.sftpConnTXT.TabIndex = 20;
-            this.sftpConnTXT.Text = "Connection to SFTP server ... ";
+            this.sftpConnTXT.Text = "Wrapping up the training process ...";
             // 
             // launchDNNBtn
             // 
@@ -105,29 +106,29 @@
             // nnProgressTXT
             // 
             this.nnProgressTXT.AutoSize = true;
-            this.nnProgressTXT.Location = new System.Drawing.Point(16, 89);
+            this.nnProgressTXT.Location = new System.Drawing.Point(32, 90);
             this.nnProgressTXT.Name = "nnProgressTXT";
-            this.nnProgressTXT.Size = new System.Drawing.Size(137, 13);
+            this.nnProgressTXT.Size = new System.Drawing.Size(151, 13);
             this.nnProgressTXT.TabIndex = 22;
-            this.nnProgressTXT.Text = "Neural network progress ... ";
+            this.nnProgressTXT.Text = "Training the neural network ... ";
             // 
             // uploadMatricesTXT
             // 
             this.uploadMatricesTXT.AutoSize = true;
-            this.uploadMatricesTXT.Location = new System.Drawing.Point(16, 135);
+            this.uploadMatricesTXT.Location = new System.Drawing.Point(32, 136);
             this.uploadMatricesTXT.Name = "uploadMatricesTXT";
-            this.uploadMatricesTXT.Size = new System.Drawing.Size(83, 13);
+            this.uploadMatricesTXT.Size = new System.Drawing.Size(100, 13);
             this.uploadMatricesTXT.TabIndex = 23;
-            this.uploadMatricesTXT.Text = "Upload matrices";
+            this.uploadMatricesTXT.Text = "Uploading results ...";
             // 
             // uploadStatus
             // 
             this.uploadStatus.AutoSize = true;
-            this.uploadStatus.Location = new System.Drawing.Point(16, 158);
+            this.uploadStatus.Location = new System.Drawing.Point(32, 159);
             this.uploadStatus.Name = "uploadStatus";
-            this.uploadStatus.Size = new System.Drawing.Size(87, 13);
+            this.uploadStatus.Size = new System.Drawing.Size(77, 13);
             this.uploadStatus.TabIndex = 25;
-            this.uploadStatus.Text = "Upload status ... ";
+            this.uploadStatus.Text = "Cleaining up ...";
             // 
             // timer1
             // 
@@ -155,27 +156,27 @@
             this.EasterEgg.Text = "Ver α1.7";
             this.EasterEgg.DoubleClick += new System.EventHandler(this.EasterEgg_DoubleClick);
             // 
-            // UploadBtn
-            // 
-            this.UploadBtn.Location = new System.Drawing.Point(215, 20);
-            this.UploadBtn.Name = "UploadBtn";
-            this.UploadBtn.Size = new System.Drawing.Size(75, 23);
-            this.UploadBtn.TabIndex = 28;
-            this.UploadBtn.Text = "Upload";
-            this.UploadBtn.UseVisualStyleBackColor = true;
-            this.UploadBtn.Click += new System.EventHandler(this.UploadBtn_Click);
-            // 
             // timer2
             // 
-            this.timer2.Interval = 2000;
+            this.timer2.Interval = 1000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::P2PNNClient.Properties.Resources.play_arrow;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 17);
+            this.pictureBox1.TabIndex = 28;
+            this.pictureBox1.TabStop = false;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(406, 189);
-            this.Controls.Add(this.UploadBtn);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.EasterEgg);
             this.Controls.Add(this.debugBtn);
             this.Controls.Add(this.uploadStatus);
@@ -193,6 +194,8 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Project DNN";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,12 +210,12 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Button debugBtn;
         private System.Windows.Forms.Label EasterEgg;
-        private System.Windows.Forms.Button UploadBtn;
         public System.Windows.Forms.Label tokenCheck;
         public System.Windows.Forms.Label downloadCheckTXT;
         public System.Windows.Forms.Label sftpConnTXT;
         public System.Windows.Forms.Label uploadStatus;
         private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import numpy as np
 
 serverWIH= np.load("server_wih.npy")
@@ -21,7 +19,7 @@ def gentle_avg(m1, m2, split_percentage):
 
 clientWIH = np.load("client_wih.npy")
 clientWHO = np.load("client_who.npy")
-        
+
 #serverWIH = np.mean( np.array([ serverWIH, clientWIH ]), axis=0 )
 #serverWHO = np.mean( np.array([ serverWHO, clientWHO ]), axis=0 )
 serverWIH = gentle_avg(serverWIH, clientWIH, 20)

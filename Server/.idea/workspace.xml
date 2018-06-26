@@ -22,18 +22,7 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="api.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/api.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="86" column="54" lean-forward="true" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -49,11 +38,8 @@
         <option value="$PROJECT_DIR$/css/custom.css" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/php/upload.php" />
-        <option value="$PROJECT_DIR$/php/merger.php" />
         <option value="$PROJECT_DIR$/uploads/projects/STENDENS-ab7a0512b383591b0c137d6ed1953c48634431c7/splits/dataset0.csv" />
-        <option value="$PROJECT_DIR$/new_project.php" />
         <option value="$PROJECT_DIR$/php/functions.php" />
-        <option value="$PROJECT_DIR$/project.php" />
         <option value="$PROJECT_DIR$/edit.php" />
         <option value="$PROJECT_DIR$/debug.php" />
         <option value="$PROJECT_DIR$/php/conn.php" />
@@ -63,6 +49,11 @@
         <option value="$PROJECT_DIR$/js/presentation.js" />
         <option value="$PROJECT_DIR$/test_result.php" />
         <option value="$PROJECT_DIR$/api.php" />
+        <option value="$PROJECT_DIR$/mergeArea/merger.bat" />
+        <option value="$PROJECT_DIR$/new_project.php" />
+        <option value="$PROJECT_DIR$/mergeArea/merge.py" />
+        <option value="$PROJECT_DIR$/project.php" />
+        <option value="$PROJECT_DIR$/php/merger.php" />
       </list>
     </option>
   </component>
@@ -76,7 +67,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-68" />
     <option name="y" value="42" />
     <option name="width" value="1932" />
@@ -124,6 +115,11 @@
             <path>
               <item name="Server" type="b2602c69:ProjectViewProjectNode" />
               <item name="Server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="mergeArea" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="php" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -149,6 +145,22 @@
               <item name="Server" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="uploads" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="MNIST20-7c304963cec03b5831792669c79756f6bdd73d2c" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="master" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="uploads" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="MNIST20-7c304963cec03b5831792669c79756f6bdd73d2c" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="results" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="uploads" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="projects" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="STENDENS-ab7a0512b383591b0c137d6ed1953c48634431c7" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -163,6 +175,12 @@
     <property name="last_opened_file_path" value="R:/andalusier" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Server\uploads\projects\MNIST20-7c304963cec03b5831792669c79756f6bdd73d2c\master" />
+      <recent name="G:\xampp\htdocs\ProjectDNN\DistributedNeuralNetwork\Server\uploads\projects\MNIST20-7c304963cec03b5831792669c79756f6bdd73d2c\results\dataset0" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -192,22 +210,21 @@
       <workItem from="1528638124005" duration="7325000" />
       <workItem from="1528714642962" duration="7362000" />
       <workItem from="1528903169345" duration="6008000" />
-      <workItem from="1530014015341" duration="8022000" />
+      <workItem from="1530014015341" duration="12355000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28717000" />
+    <option name="totallyTimeSpent" value="33050000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="32" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="32" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25586355" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28198293" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Docker" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08635394" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08635394" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -260,6 +277,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2990">
           <caret line="115" column="83" lean-forward="false" selection-start-line="115" selection-start-column="83" selection-end-line="115" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -344,20 +362,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mergeArea/merge.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/merger.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="9" column="1" lean-forward="false" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/uploads/projects/STENDENS-ab7a0512b383591b0c137d6ed1953c48634431c7/splits/dataset0.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -381,35 +385,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/new_project.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="22" column="54" lean-forward="false" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/php/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2730">
-          <caret line="105" column="32" lean-forward="true" selection-start-line="105" selection-start-column="32" selection-end-line="105" selection-end-column="32" />
-          <folding>
-            <marker date="1528720786749" expanded="true" signature="147:187" ph="SELECT * FRO... projects" />
-            <marker date="1528720786749" expanded="true" signature="826:878" ph="SELECT id FR... projects" />
-            <marker date="1528720786749" expanded="true" signature="1089:1128" ph="SELECT id FR... projects" />
-            <marker date="1528720786749" expanded="true" signature="1316:1351" ph="SELECT * FRO... projects" />
-            <marker date="1528720786749" expanded="true" signature="2526:2569" ph="SELECT * FRO... datapool" />
-            <marker date="1528720786749" expanded="true" signature="2765:2823" ph="SELECT * FRO... datapool" />
-            <marker date="1528720786749" expanded="true" signature="3684:3741" ph="SELECT id FR... datapool" />
-            <marker date="1528720786749" expanded="true" signature="3949:3988" ph="SELECT id FR... projects" />
-            <marker date="1528720786749" expanded="true" signature="4542:4606" ph="UPDATE datapool... " />
-            <marker date="1528720786749" expanded="true" signature="4557:4593" ph="SELECT * FRO... datapool" />
-            <marker date="1528720786749" expanded="true" signature="5063:5106" ph="SELECT id FR... datapool" />
-            <marker date="1528720786749" expanded="true" signature="5063:5107" ph="SELECT id FR... datapool" />
-            <marker date="1528720786749" expanded="true" signature="5202:5261" ph="SELECT id FR... datapool" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/debug.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="26">
@@ -421,13 +396,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
           <caret line="6" column="31" lean-forward="true" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/project.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="117" column="83" lean-forward="false" selection-start-line="117" selection-start-column="83" selection-end-line="117" selection-end-column="83" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -435,14 +404,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="36" column="32" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -508,15 +469,87 @@
         <state relative-caret-position="936">
           <caret line="92" column="64" lean-forward="false" selection-start-line="92" selection-start-column="58" selection-end-line="92" selection-end-column="64" />
           <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/new_project.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+          <folding>
+            <marker date="1530039318476" expanded="true" signature="354:431" ph="INSERT INTO projects... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mergeArea/merge.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="16" column="19" lean-forward="true" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="26" column="31" lean-forward="true" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mergeArea/merger.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="1" column="27" lean-forward="true" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/api.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="86" column="54" lean-forward="true" selection-start-line="86" selection-start-column="54" selection-end-line="86" selection-end-column="54" />
+        <state relative-caret-position="52">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="3" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/merger.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="27" column="33" lean-forward="false" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/php/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="152" column="21" lean-forward="false" selection-start-line="152" selection-start-column="21" selection-end-line="152" selection-end-column="21" />
+          <folding>
+            <marker date="1528720786749" expanded="true" signature="147:187" ph="SELECT * FRO... projects" />
+            <marker date="1528720786749" expanded="true" signature="826:878" ph="SELECT id FR... projects" />
+            <marker date="1528720786749" expanded="true" signature="1089:1128" ph="SELECT id FR... projects" />
+            <marker date="1528720786749" expanded="true" signature="1316:1351" ph="SELECT * FRO... projects" />
+            <marker date="1528720786749" expanded="true" signature="2526:2569" ph="SELECT * FRO... datapool" />
+            <marker date="1528720786749" expanded="true" signature="2765:2823" ph="SELECT * FRO... datapool" />
+            <marker date="1528720786749" expanded="true" signature="3684:3741" ph="SELECT id FR... datapool" />
+            <marker date="1528720786749" expanded="true" signature="3949:3988" ph="SELECT id FR... projects" />
+            <marker date="1528720786749" expanded="true" signature="4542:4606" ph="UPDATE datapool... " />
+            <marker date="1528720786749" expanded="true" signature="4557:4593" ph="SELECT * FRO... datapool" />
+            <marker date="1528720786749" expanded="true" signature="5063:5106" ph="SELECT id FR... datapool" />
+            <marker date="1528720786749" expanded="true" signature="5063:5107" ph="SELECT id FR... datapool" />
+            <marker date="1528720786749" expanded="true" signature="5202:5261" ph="SELECT id FR... datapool" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/project.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="116" column="30" lean-forward="false" selection-start-line="116" selection-start-column="30" selection-end-line="116" selection-end-column="30" />
           <folding />
         </state>
       </provider>

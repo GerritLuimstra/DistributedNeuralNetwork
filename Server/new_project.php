@@ -21,6 +21,7 @@
         mkdir("uploads/projects/" . $token);
         mkdir("uploads/projects/" . $token . "/splits");
         mkdir("uploads/projects/" . $token . "/results");
+        mkdir("uploads/projects/" . $token . "/master");
 
         header("Location: index.php");
         exit;

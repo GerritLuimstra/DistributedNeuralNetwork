@@ -70,6 +70,8 @@ namespace P2PNNClient
 
         private void DownloadCheck()
         {
+            pictureBox1.Location = new System.Drawing.Point(12, 43);
+
             if (connected)
             {
                 string result = "";
@@ -98,6 +100,8 @@ namespace P2PNNClient
 
                     try
                     {
+                        pictureBox1.Location = new System.Drawing.Point(12, 66);
+
                         //checking wether user has set custom download location
                         if (customLocation != "")
                             downloadLocation = customLocation;
@@ -126,7 +130,7 @@ namespace P2PNNClient
                             input.CopyTo(output);
                         }
 
-                        downloadCheckTXT.Text = "Download ... SUCCESSFUL";
+                        downloadCheckTXT.Text = "Download and extraction ... SUCCESSFUL";
                         //System.Diagnostics.Process.Start(@downloadLocation); //Opening the file
 
                         isTrue = true;
@@ -134,9 +138,13 @@ namespace P2PNNClient
                     catch
                     {
                         new Error("No more data sets.", "The data set pool appears to be empty.", 300, 80).ShowDialog();
+                        pictureBox1.Location = new System.Drawing.Point(12, 20);
                     }
-                    if(isTrue)
+                    if (isTrue)
+                    {
                         UnzipArchive(filename);
+                    }
+                        
                 }
                 else if(result == "false")
                 {
@@ -150,6 +158,11 @@ namespace P2PNNClient
             }
         }
 
+        private void CleanUp()
+        {
+
+        }
+
         private string GetPythonPath()
         {
             string path = Path.GetPathRoot(Environment.SystemDirectory);
@@ -158,17 +171,15 @@ namespace P2PNNClient
 
         private void LaunchNN() //TODO Make custom path to nn in the settings menu
         {
+            pictureBox1.Location = new System.Drawing.Point(12, 89);
+
             createBatchFile();
-            MessageBox.Show(File.Exists(@Config.downloadLocation + "\\DNNExtracted\\start.cmd").ToString());
 
             var startInfo = new ProcessStartInfo();
             startInfo.FileName = @Config.downloadLocation + "\\DNNExtracted\\start.cmd";
             startInfo.WorkingDirectory = @Config.downloadLocation + "\\DNNExtracted\\"; // working directory
             Process proc = Process.Start(startInfo);
-
-            File.Delete(@Config.downloadLocation + "\\DNNExtracted\\start.cmd");
-
-            ZipArchive();
+            timer2.Start();
         }
 
         private void createBatchFile()
@@ -184,7 +195,7 @@ namespace P2PNNClient
         private void NNProgress() //reading the current progress of the neural network
         {
             string nnProgress = File.ReadAllText(@NNProgressLocation);
-            nnProgressTXT.Text = "Neural network progress ... " +  nnProgress + "%";
+            nnProgressTXT.Text = "Neural network progress ... " + nnProgress + "%";
 
         }
 
@@ -233,19 +244,10 @@ namespace P2PNNClient
         private void timer1_Tick(object sender, EventArgs e)  //timer method that refreshes every 3 seconds
         {
             PingPage();
-            if (File.Exists(NNProgressLocation))
-            {
-                NNProgress();
-            }
-            else
-            {
-                nnProgressTXT.Text = "Neural network progress ... NOT RUNNING";
-            }
 
             //add check for Completed.txt
             if(File.Exists(@Config.downloadLocation + "\\extracted\\Completed.txt") && count == 1)
             {
-                //ZipArchive();
                 count ++;
             }
         }
@@ -285,7 +287,6 @@ namespace P2PNNClient
                 Directory.Delete(Config.downloadLocation + "\\DNNResult", true);
             }
 
-            //Directory.Delete(@Config.downloadLocation + "\\extracted", true); //deleting directory if it already exists
             ZipFile.ExtractToDirectory(Config.downloadLocation + "\\" + archive, Config.downloadLocation + "\\DNNExtracted");
             File.Delete(Config.downloadLocation + "\\" + archive);
 
@@ -296,18 +297,19 @@ namespace P2PNNClient
         {
             string[] files = System.IO.Directory.GetFiles(@Config.downloadLocation + "\\DNNExtracted", "*.csv");
 
+
             foreach (string file in files)
             {
                 System.IO.File.Delete(file);
             }
 
+            if (File.Exists(@Config.downloadLocation + "\\DNNExtracted\\done.txt")) File.Delete(@Config.downloadLocation + "\\DNNExtracted\\done.txt");
+            if (File.Exists(@Config.downloadLocation + "\\DNNExtracted\\network.py")) File.Delete(@Config.downloadLocation + "\\DNNExtracted\\network.py");
+            if (File.Exists(@Config.downloadLocation + "\\DNNExtracted\\start.cmd")) File.Delete(@Config.downloadLocation + "\\DNNExtracted\\start.cmd");
 
-            //File.Delete(Config.downloadLocation + "\\DNNExtracted\\");
-            //File.Delete(Config.downloadLocation + "\\" + Config.token + ".zip");
             System.IO.Directory.CreateDirectory(@Config.downloadLocation + "\\DNNResult");
             ZipFile.CreateFromDirectory(@Config.downloadLocation + "\\DNNExtracted", @Config.downloadLocation + "\\DNNResult\\" + filename);
 
-            //FileUploadSFTP();
             FileUploadToPHP();
         }
 
@@ -349,6 +351,8 @@ namespace P2PNNClient
 
         private void FileUploadToPHP()
         {
+            pictureBox1.Location = new System.Drawing.Point(12, 135);
+
             string uploadFile = @Config.downloadLocation + "\\DNNResult\\" + filename;
             
             WebClient wc = new WebClient();
@@ -357,8 +361,12 @@ namespace P2PNNClient
             byte[] result = wc.UploadFile(url, "POST", uploadFile);
             string res = System.Text.Encoding.UTF8.GetString(result, 0, result.Length);
 
+            pictureBox1.Location = new System.Drawing.Point(12, 159);
+
             Directory.Delete(Config.downloadLocation + "\\DNNExtracted", true);
             Directory.Delete(Config.downloadLocation + "\\DNNResult", true);
+
+            pictureBox1.Visible = true;
 
         }
 
@@ -369,18 +377,32 @@ namespace P2PNNClient
 
         private void UploadBtn_Click(object sender, EventArgs e) //shows custom message box if everything was successful
         {
-            //FileUploadToPHP();
             LaunchNN();
+            pictureBox1.Visible = true;
+            pictureBox1.Location = new System.Drawing.Point(12, 20);
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
+            
+            if(nnProgressTXT.Text == "Training the neural network ...")
+            {
+                nnProgressTXT.Text = "Training the neural network ... Training";
+            } else
+            {
+                nnProgressTXT.Text = "Training the neural network ...";
+            }
+
             if (File.Exists(Config.downloadLocation + "\\DNNExtracted\\done.txt"))
             {
                 timer2.Stop();
-                MessageBox.Show("File exists!");
-                //ZipArchive();
+                ZipArchive();
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
